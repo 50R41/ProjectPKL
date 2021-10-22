@@ -1,0 +1,25 @@
+        private Color SelectThemeColor()
+        {
+            int index = random.Next(ThemeColor.Colorlist.Count);
+            while (tempIndex == index)
+            {
+               index = random.Next(ThemeColor.Colorlist.Count);
+            }
+            tempIndex = index;
+            string color = ThemeColor.Colorlist[index];
+            return ColorTranslator.FromHtml(color);
+        }
+
+        private void LoadTheme()
+        {
+            foreach (Control btns in this.Controls)
+            {
+                if (btns.GetType() == typeof(Button))
+                {
+                    Button btn = (Button)btns;
+                    btn.BackColor = ThemeColor.PrimaryColor;
+                    btn.ForeColor = Color.White;
+                    btn.FlatAppearance.BorderColor = ThemeColor.SecondaryColor;
+                }
+            }
+        }

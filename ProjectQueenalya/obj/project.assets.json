@@ -1,0 +1,63 @@
+{
+  "version": 3,
+  "targets": {
+    ".NETFramework,Version=v4.5": {},
+    ".NETFramework,Version=v4.5/win": {},
+    ".NETFramework,Version=v4.5/win-x64": {},
+    ".NETFramework,Version=v4.5/win-x86": {}
+  },
+  "libraries": {},
+  "projectFileDependencyGroups": {
+    ".NETFramework,Version=v4.5": []
+  },
+  "packageFolders": {
+    "C:\\Users\\hizak\\.nuget\\packages\\": {},
+    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "C:\\Users\\hizak\\Documents\\ProjectQueenalya\\ProjectQueenalya\\ProjectQueenalya.csproj",
+      "projectName": "ProjectQueenalya",
+      "projectPath": "C:\\Users\\hizak\\Documents\\ProjectQueenalya\\ProjectQueenalya\\ProjectQueenalya.csproj",
+      "packagesPath": "C:\\Users\\hizak\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\hizak\\Documents\\ProjectQueenalya\\ProjectQueenalya\\obj\\",
+      "projectStyle": "PackageReference",
+      "skipContentFileWrite": true,
+      "fallbackFolders": [
+        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+      ],
+      "configFilePaths": [
+        "C:\\Users\\hizak\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+      ],
+      "originalTargetFrameworks": [
+        "net45"
+      ],
+      "sources": {
+        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "https://nuget.org/api/v2/": {}
+      },
+      "frameworks": {
+        "net45": {
+          "projectReferences": {}
+        }
+      }
+    },
+    "frameworks": {
+      "net45": {}
+    },
+    "runtimes": {
+      "win": {
+        "#import": []
+      },
+      "win-x64": {
+        "#import": []
+      },
+      "win-x86": {
+        "#import": []
+      }
+    }
+  }
+}
