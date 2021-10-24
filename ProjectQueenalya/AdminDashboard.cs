@@ -246,7 +246,7 @@ namespace ProjectQueenalya
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Close();
-            FormLogin ss = new FormLogin();
+            AdminLogin ss = new AdminLogin();
             ss.Show();
         }
 

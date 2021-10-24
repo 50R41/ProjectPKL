@@ -33,7 +33,6 @@
             this.txtUSER = new System.Windows.Forms.TextBox();
             this.txtPASS = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtType = new System.Windows.Forms.TextBox();
             this.btnEXIT = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.btnLOGIN = new System.Windows.Forms.Button();
@@ -46,11 +45,10 @@
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.White;
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Controls.Add(this.txtUSER);
             this.panel1.Controls.Add(this.txtPASS);
+            this.panel1.Controls.Add(this.txtUSER);
+            this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Controls.Add(this.txtType);
             this.panel1.Controls.Add(this.btnEXIT);
             this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.btnLOGIN);
@@ -94,19 +92,6 @@
             this.label2.Size = new System.Drawing.Size(53, 13);
             this.label2.TabIndex = 4;
             this.label2.Text = "Password";
-            // 
-            // txtType
-            // 
-            this.txtType.AutoCompleteCustomSource.AddRange(new string[] {
-            "admin"});
-            this.txtType.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtType.Location = new System.Drawing.Point(81, 79);
-            this.txtType.Name = "txtType";
-            this.txtType.ReadOnly = true;
-            this.txtType.Size = new System.Drawing.Size(47, 22);
-            this.txtType.TabIndex = 8;
-            this.txtType.Text = "admin";
-            this.txtType.Visible = false;
             // 
             // btnEXIT
             // 
@@ -189,7 +174,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox txtType;
         private System.Windows.Forms.Button btnEXIT;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;

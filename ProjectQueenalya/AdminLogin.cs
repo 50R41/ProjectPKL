@@ -33,33 +33,49 @@ namespace ProjectQueenalya
         {
             try
             {
-                string myConnection = "Data Source=localhost;port=3306;username=root;password=;database=test_login_queena";
-                string Query = "Select * From login where username='" + txtUSER.Text + "' and password='" + txtPASS.Text + "' and usertype='" + txtType.Text + "'";
-                MySqlConnection con = new MySqlConnection(myConnection);
-                MySqlCommand cmd = new MySqlCommand(Query, con);
-                MySqlDataAdapter sda = new MySqlDataAdapter(cmd);
-                DataTable dt = new DataTable();
-                sda.Fill(dt);
-                if (txtUSER.Text == "" || txtPASS.Text == "")
+                if ( txtUSER.Text == "" || txtPASS.Text == "")
                 {
-                    MessageBox.Show("Tolong masukan username dan passwordnya");
-                    return;
-
-                }
-                if (dt.Rows.Count > 0)
-                {
-                    MessageBox.Show("Kamu login sebagai " + txtType.Text);
-                    AdminDashboard ss = new AdminDashboard();
-                    ss.Show();
-                    this.Hide();
+                    MessageBox.Show("Harap masukkan username dan password anda..");
                 }
                 else
-                    MessageBox.Show("Invalid username or password" , "PKL SMKN 2 SUKABUMI" , MessageBoxButtons.OK , MessageBoxIcon.Error);
+                {
+                    ConLogin bukaFungsi = new ConLogin();
+                    DataTable dt = new DataTable();
+                    string query = "select username,password,usertype from login where username='{0}'and password='{1}'";
+                    query = string.Format(query, txtUSER.Text, txtPASS.Text);
+                    dt = bukaFungsi.BukaTable(query);
+                    if (dt.Rows.Count > 0)
+                    {
+                        MessageBox.Show("Login berhasil ! , anda login sebagai : " + dt.Rows[0][2].ToString() + "" , "PKL SMKN 2 SUKABUMI" , MessageBoxButtons.OK , MessageBoxIcon.Information);
+                        if (dt.Rows[0][2].ToString() == "admin")
+                        {
+                            AdminDashboard sd = new AdminDashboard();
+                            sd.Show();
+                            this.Hide();
+                        }
+                        else if (dt.Rows[0][2].ToString() == "pebimbing")
+                        {
+                            PebimbingDashboard sd = new PebimbingDashboard();
+                            sd.Show();
+                            this.Hide();
+                        }
+                        else if (dt.Rows[0][2].ToString() == "siswa")
+                        {
+                            SiswaDashboard sd = new SiswaDashboard();
+                            sd.Show();
+                            this.Hide();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Username atau password anda salah.." , "PKL SMKN 2 SUKABUMI" , MessageBoxButtons.OK , MessageBoxIcon.Error);
+                    }
+                }
             }
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message , "PKL SMKN 2 SUKABUMI" , MessageBoxButtons.OK , MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "PKL SMKN 2 SUKABUMI", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
