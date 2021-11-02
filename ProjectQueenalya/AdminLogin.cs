@@ -7,8 +7,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using MySql.Data.MySqlClient;
+using System.Data.SqlClient;
 using System.Runtime.InteropServices;
+using System.Configuration;
 
 namespace ProjectQueenalya
 {
@@ -41,25 +42,25 @@ namespace ProjectQueenalya
                 {
                     ConLogin bukaFungsi = new ConLogin();
                     DataTable dt = new DataTable();
-                    string query = "select username,password,usertype from login where username='{0}'and password='{1}'";
+                    string query = "select username,password,role from login where username='{0}'and password='{1}'";
                     query = string.Format(query, txtUSER.Text, txtPASS.Text);
                     dt = bukaFungsi.BukaTable(query);
                     if (dt.Rows.Count > 0)
                     {
-                        MessageBox.Show("Login berhasil ! , anda login sebagai : " + dt.Rows[0][2].ToString() + "" , "PKL SMKN 2 SUKABUMI" , MessageBoxButtons.OK , MessageBoxIcon.Information);
+                        MessageBox.Show("Login berhasil ! , anda login sebagai : " + dt.Rows[0][2].ToString() + "", "PKL SMKN 2 SUKABUMI", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         if (dt.Rows[0][2].ToString() == "admin")
                         {
                             AdminDashboard sd = new AdminDashboard();
                             sd.Show();
                             this.Hide();
                         }
-                        else if (dt.Rows[0][2].ToString() == "pebimbing")
+                        if (dt.Rows[0][2].ToString() == "pembimbing")
                         {
                             PebimbingDashboard sd = new PebimbingDashboard();
                             sd.Show();
                             this.Hide();
                         }
-                        else if (dt.Rows[0][2].ToString() == "siswa")
+                        if (dt.Rows[0][2].ToString() == "siswa")
                         {
                             SiswaDashboard sd = new SiswaDashboard();
                             sd.Show();
@@ -68,14 +69,14 @@ namespace ProjectQueenalya
                     }
                     else
                     {
-                        MessageBox.Show("Username atau password anda salah.." , "PKL SMKN 2 SUKABUMI" , MessageBoxButtons.OK , MessageBoxIcon.Error);
+                        MessageBox.Show("Username atau password anda salah..", "PKL SMKN 2 SUKABUMI", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "PKL SMKN 2 SUKABUMI", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "MEA PERJAKA", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

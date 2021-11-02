@@ -25,7 +25,6 @@ namespace ProjectQueenalya
             CollapseMenu();
             this.Padding = new Padding(borderSize);//Border size
             this.BackColor = Color.FromArgb(51, 51, 76);
-            btnCloseChild.Visible = false;
         }
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -74,7 +73,6 @@ namespace ProjectQueenalya
                     panelLogo.BackColor = ThemeColor.ChangeColorBrightness(color, -0.2);
                     ThemeColor.PrimaryColor = color;
                     ThemeColor.SecondaryColor = ThemeColor.ChangeColorBrightness(color, -0.2);
-                    btnCloseChild.Visible = true;
                 }
             }
 
@@ -88,17 +86,8 @@ namespace ProjectQueenalya
                     previousBtn.BackColor = Color.FromArgb(51, 51, 76);
                     previousBtn.ForeColor = Color.White;
                     previousBtn.Font = new System.Drawing.Font("Verdana", 8.6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                    btnCloseChild.Visible = false;
                 }
             }
-        }
-        private void Reset()
-        {
-            DisableButton();
-            lblTitle.Text = "BERANDA";
-            panelTitleBar.BackColor = Color.FromArgb(0, 150, 136);
-            panelLogo.BackColor = Color.FromArgb(39, 39, 58);
-            currentButton = null;
         }
         private void panelTitleBar_MouseDown(object sender, MouseEventArgs e)
         {
@@ -238,25 +227,12 @@ namespace ProjectQueenalya
             OpenChildForm(new AdminDashboardForm.FormInstansi(), sender);
         }
 
-        private void btnAkun_Click(object sender, EventArgs e)
-        {
-            OpenChildForm(new AdminDashboardForm.FormAkun(), sender);
-        }
-
         private void btnLogout_Click(object sender, EventArgs e)
         {
             this.Close();
             AdminLogin ss = new AdminLogin();
             ss.Show();
         }
-
-        private void btnCloseChild_Click(object sender, EventArgs e)
-        {
-            if (activeForm != null)
-                activeForm.Close();
-            Reset();
-        }
-
         private void lblTitle_MouseDown(object sender, MouseEventArgs e)
         {
             ReleaseCapture();
@@ -275,7 +251,17 @@ namespace ProjectQueenalya
 
         private void AdminDashboard_Load(object sender, EventArgs e)
         {
+            btnPebimbing.PerformClick();
+        }
 
+        private void btnAbsen_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new AdminDashboardForm.FormAbsen(), sender);
+        }
+
+        private void btnAkun_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new AdminDashboardForm.FormAkun(), sender);
         }
     }
 }

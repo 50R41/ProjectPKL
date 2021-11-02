@@ -38,7 +38,6 @@ C:\Users\hizak\Documents\ProjectQueenalya ( PKL or  KSSI 3 USERS  )\ProjectQueen
 C:\Users\hizak\Documents\ProjectQueenalya ( PKL or  KSSI 3 USERS  )\ProjectQueenalya\obj\Debug\ProjectQueenalya.AdminDashboardForm.FormPebimbing.resources
 C:\Users\hizak\Documents\ProjectQueenalya ( PKL or  KSSI 3 USERS  )\ProjectQueenalya\obj\Debug\ProjectQueenalya.AdminLogin.resources
 C:\Users\hizak\Documents\ProjectQueenalya ( PKL or  KSSI 3 USERS  )\ProjectQueenalya\obj\Debug\ProjectQueenalya.PebimbingDashboard.resources
-C:\Users\hizak\Documents\ProjectQueenalya ( PKL or  KSSI 3 USERS  )\ProjectQueenalya\obj\Debug\ProjectQueenalya.PebimbingDashboardForm.Siswa.resources
 C:\Users\hizak\Documents\ProjectQueenalya ( PKL or  KSSI 3 USERS  )\ProjectQueenalya\obj\Debug\ProjectQueenalya.Properties.Resources.resources
 C:\Users\hizak\Documents\ProjectQueenalya ( PKL or  KSSI 3 USERS  )\ProjectQueenalya\obj\Debug\ProjectQueenalya.SiswaDashboard.resources
 C:\Users\hizak\Documents\ProjectQueenalya ( PKL or  KSSI 3 USERS  )\ProjectQueenalya\obj\Debug\ProjectQueenalya.SiswaDashboardForm.Absen.resources
@@ -46,10 +45,14 @@ C:\Users\hizak\Documents\ProjectQueenalya ( PKL or  KSSI 3 USERS  )\ProjectQueen
 C:\Users\hizak\Documents\ProjectQueenalya ( PKL or  KSSI 3 USERS  )\ProjectQueenalya\obj\Debug\ProjectQueenalya.exe
 C:\Users\hizak\Documents\ProjectQueenalya ( PKL or  KSSI 3 USERS  )\ProjectQueenalya\obj\Debug\ProjectQueenalya.pdb
 C:\Users\hizak\Documents\ProjectQueenalya ( PKL or  KSSI 3 USERS  )\ProjectQueenalya\obj\Debug\ProjectQueenalya.AdminDashboardForm.FormSiswa.resources
-C:\Users\hizak\Documents\ProjectQueenalya ( PKL or  KSSI 3 USERS  )\ProjectQueenalya\obj\Debug\ProjectQueenalya.AdminDashboardForm.FormAkun.resources
 C:\Users\hizak\Documents\ProjectQueenalya ( PKL or  KSSI 3 USERS  )\ProjectQueenalya\obj\Debug\ProjectQueenalya.AdminDashboardForm.FormInstansi.resources
-C:\Users\hizak\Documents\ProjectQueenalya ( PKL or  KSSI 3 USERS  )\ProjectQueenalya\obj\Debug\ProjectQueenalya.PebimbingDashboardForm.Instansi.resources
 C:\Users\hizak\Documents\ProjectQueenalya ( PKL or  KSSI 3 USERS  )\ProjectQueenalya\obj\Debug\ProjectQueenalya.csprojAssemblyReference.cache
 C:\Users\hizak\Documents\ProjectQueenalya ( PKL or  KSSI 3 USERS  )\ProjectQueenalya\obj\Debug\ProjectQueenalya.csproj.CoreCompileInputs.cache
 C:\Users\hizak\Documents\ProjectQueenalya ( PKL or  KSSI 3 USERS  )\ProjectQueenalya\bin\Debug\MySql.Data.dll
 C:\Users\hizak\Documents\ProjectQueenalya ( PKL or  KSSI 3 USERS  )\ProjectQueenalya\obj\Debug\ProjectQueenalya.csproj.CopyComplete
+C:\Users\hizak\Documents\ProjectQueenalya ( PKL or  KSSI 3 USERS  )\ProjectQueenalya\bin\Debug\EntityFramework.dll
+C:\Users\hizak\Documents\ProjectQueenalya ( PKL or  KSSI 3 USERS  )\ProjectQueenalya\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\hizak\Documents\ProjectQueenalya ( PKL or  KSSI 3 USERS  )\ProjectQueenalya\bin\Debug\EntityFramework.xml
+C:\Users\hizak\Documents\ProjectQueenalya ( PKL or  KSSI 3 USERS  )\ProjectQueenalya\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\hizak\Documents\ProjectQueenalya ( PKL or  KSSI 3 USERS  )\ProjectQueenalya\obj\Debug\ProjectQueenalya.AdminDashboardForm.FormAkun.resources
+C:\Users\hizak\Documents\ProjectQueenalya ( PKL or  KSSI 3 USERS  )\ProjectQueenalya\obj\Debug\ProjectQueenalya.AdminDashboardForm.FormAbsen.resources

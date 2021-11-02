@@ -1,0 +1,118 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PKLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="PKLEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Absens" EntityType="PKLModel.Absen" />
+    <EntitySet Name="Gurus" EntityType="PKLModel.Guru" />
+    <EntitySet Name="Instansis" EntityType="PKLModel.Instansi" />
+    <EntitySet Name="Logins" EntityType="PKLModel.Login" />
+    <EntitySet Name="Siswas" EntityType="PKLModel.Siswa" />
+    <AssociationSet Name="FK_Absen_Siswa" Association="PKLModel.FK_Absen_Siswa">
+      <End Role="Siswa" EntitySet="Siswas" />
+      <End Role="Absen" EntitySet="Absens" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Guru_Instansi" Association="PKLModel.FK_Guru_Instansi">
+      <End Role="Instansi" EntitySet="Instansis" />
+      <End Role="Guru" EntitySet="Gurus" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Siswa_Instansi" Association="PKLModel.FK_Siswa_Instansi">
+      <End Role="Instansi" EntitySet="Instansis" />
+      <End Role="Siswa" EntitySet="Siswas" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Absen">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="kehadiran" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="tanggal" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="nama_siswa" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Siswa" Relationship="PKLModel.FK_Absen_Siswa" FromRole="Absen" ToRole="Siswa" />
+  </EntityType>
+  <EntityType Name="Guru">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nip" Type="Int64" Nullable="false" />
+    <Property Name="nama" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="alamat" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="no_hp" Type="Int64" Nullable="false" />
+    <Property Name="instansi_nama" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="foto_guru" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Instansi" Relationship="PKLModel.FK_Guru_Instansi" FromRole="Guru" ToRole="Instansi" />
+  </EntityType>
+  <EntityType Name="Instansi">
+    <Key>
+      <PropertyRef Name="nama" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nama" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="alamat" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="foto_instansi" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Gurus" Relationship="PKLModel.FK_Guru_Instansi" FromRole="Instansi" ToRole="Guru" />
+    <NavigationProperty Name="Siswas" Relationship="PKLModel.FK_Siswa_Instansi" FromRole="Instansi" ToRole="Siswa" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nama" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="username" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="password" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="role" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="status" Type="Boolean" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Siswa">
+    <Key>
+      <PropertyRef Name="nama" />
+    </Key>
+    <Property Name="id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="nis" Type="Int64" Nullable="false" />
+    <Property Name="nama" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="kelas" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="alamat" Type="String" Nullable="false" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="no_hp" Type="Int64" Nullable="false" />
+    <Property Name="instansi_nama" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="foto_siswa" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+    <NavigationProperty Name="Absens" Relationship="PKLModel.FK_Absen_Siswa" FromRole="Siswa" ToRole="Absen" />
+    <NavigationProperty Name="Instansi" Relationship="PKLModel.FK_Siswa_Instansi" FromRole="Siswa" ToRole="Instansi" />
+  </EntityType>
+  <Association Name="FK_Absen_Siswa">
+    <End Type="PKLModel.Siswa" Role="Siswa" Multiplicity="0..1" />
+    <End Type="PKLModel.Absen" Role="Absen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Siswa">
+        <PropertyRef Name="nama" />
+      </Principal>
+      <Dependent Role="Absen">
+        <PropertyRef Name="nama_siswa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Guru_Instansi">
+    <End Type="PKLModel.Instansi" Role="Instansi" Multiplicity="1" />
+    <End Type="PKLModel.Guru" Role="Guru" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Instansi">
+        <PropertyRef Name="nama" />
+      </Principal>
+      <Dependent Role="Guru">
+        <PropertyRef Name="instansi_nama" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Siswa_Instansi">
+    <End Type="PKLModel.Instansi" Role="Instansi" Multiplicity="1" />
+    <End Type="PKLModel.Siswa" Role="Siswa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Instansi">
+        <PropertyRef Name="nama" />
+      </Principal>
+      <Dependent Role="Siswa">
+        <PropertyRef Name="instansi_nama" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

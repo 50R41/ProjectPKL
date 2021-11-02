@@ -29,12 +29,11 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtUSER = new System.Windows.Forms.TextBox();
             this.txtPASS = new System.Windows.Forms.TextBox();
+            this.txtUSER = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.btnEXIT = new System.Windows.Forms.Button();
-            this.label4 = new System.Windows.Forms.Label();
             this.btnLOGIN = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -50,30 +49,12 @@
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.label2);
             this.panel1.Controls.Add(this.btnEXIT);
-            this.panel1.Controls.Add(this.label4);
             this.panel1.Controls.Add(this.btnLOGIN);
-            this.panel1.Location = new System.Drawing.Point(48, 101);
+            this.panel1.Location = new System.Drawing.Point(47, 101);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(206, 147);
             this.panel1.TabIndex = 14;
             this.panel1.MouseDown += new System.Windows.Forms.MouseEventHandler(this.panel1_MouseDown);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(18, 34);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(55, 13);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Username";
-            // 
-            // txtUSER
-            // 
-            this.txtUSER.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtUSER.Location = new System.Drawing.Point(81, 30);
-            this.txtUSER.Name = "txtUSER";
-            this.txtUSER.Size = new System.Drawing.Size(104, 22);
-            this.txtUSER.TabIndex = 1;
             // 
             // txtPASS
             // 
@@ -83,6 +64,23 @@
             this.txtPASS.Size = new System.Drawing.Size(104, 22);
             this.txtPASS.TabIndex = 2;
             this.txtPASS.UseSystemPasswordChar = true;
+            // 
+            // txtUSER
+            // 
+            this.txtUSER.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtUSER.Location = new System.Drawing.Point(81, 30);
+            this.txtUSER.Name = "txtUSER";
+            this.txtUSER.Size = new System.Drawing.Size(104, 22);
+            this.txtUSER.TabIndex = 1;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(18, 34);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(55, 13);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Username";
             // 
             // label2
             // 
@@ -103,16 +101,6 @@
             this.btnEXIT.Text = "EXIT";
             this.btnEXIT.UseVisualStyleBackColor = true;
             this.btnEXIT.Click += new System.EventHandler(this.btnEXIT_Click);
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 84);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 13);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Usertype";
-            this.label4.Visible = false;
             // 
             // btnLOGIN
             // 
@@ -141,7 +129,7 @@
             // pictureBox1
             // 
             this.pictureBox1.BackgroundImage = global::ProjectQueenalya.Properties.Resources._1629078054851_2__1_;
-            this.pictureBox1.Location = new System.Drawing.Point(105, -4);
+            this.pictureBox1.Location = new System.Drawing.Point(102, -4);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(100, 109);
             this.pictureBox1.TabIndex = 12;
@@ -175,7 +163,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnEXIT;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtUSER;
         private System.Windows.Forms.Button btnLOGIN;

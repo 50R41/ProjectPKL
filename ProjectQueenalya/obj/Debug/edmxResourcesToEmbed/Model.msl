@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PKLModelStoreContainer" CdmEntityContainer="PKLEntities">
+    <EntitySetMapping Name="Absens">
+      <EntityTypeMapping TypeName="PKLModel.Absen">
+        <MappingFragment StoreEntitySet="Absen">
+          <ScalarProperty Name="nama_siswa" ColumnName="nama_siswa" />
+          <ScalarProperty Name="tanggal" ColumnName="tanggal" />
+          <ScalarProperty Name="kehadiran" ColumnName="kehadiran" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gurus">
+      <EntityTypeMapping TypeName="PKLModel.Guru">
+        <MappingFragment StoreEntitySet="Guru">
+          <ScalarProperty Name="foto_guru" ColumnName="foto_guru" />
+          <ScalarProperty Name="instansi_nama" ColumnName="instansi_nama" />
+          <ScalarProperty Name="no_hp" ColumnName="no_hp" />
+          <ScalarProperty Name="alamat" ColumnName="alamat" />
+          <ScalarProperty Name="nama" ColumnName="nama" />
+          <ScalarProperty Name="nip" ColumnName="nip" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Instansis">
+      <EntityTypeMapping TypeName="PKLModel.Instansi">
+        <MappingFragment StoreEntitySet="Instansi">
+          <ScalarProperty Name="foto_instansi" ColumnName="foto_instansi" />
+          <ScalarProperty Name="alamat" ColumnName="alamat" />
+          <ScalarProperty Name="nama" ColumnName="nama" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Logins">
+      <EntityTypeMapping TypeName="PKLModel.Login">
+        <MappingFragment StoreEntitySet="Login">
+          <ScalarProperty Name="status" ColumnName="status" />
+          <ScalarProperty Name="role" ColumnName="role" />
+          <ScalarProperty Name="password" ColumnName="password" />
+          <ScalarProperty Name="username" ColumnName="username" />
+          <ScalarProperty Name="nama" ColumnName="nama" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Siswas">
+      <EntityTypeMapping TypeName="PKLModel.Siswa">
+        <MappingFragment StoreEntitySet="Siswa">
+          <ScalarProperty Name="foto_siswa" ColumnName="foto_siswa" />
+          <ScalarProperty Name="instansi_nama" ColumnName="instansi_nama" />
+          <ScalarProperty Name="no_hp" ColumnName="no_hp" />
+          <ScalarProperty Name="alamat" ColumnName="alamat" />
+          <ScalarProperty Name="kelas" ColumnName="kelas" />
+          <ScalarProperty Name="nama" ColumnName="nama" />
+          <ScalarProperty Name="nis" ColumnName="nis" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

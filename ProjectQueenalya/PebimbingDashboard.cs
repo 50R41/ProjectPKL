@@ -26,7 +26,6 @@ namespace ProjectQueenalya
             CollapseMenu_1();
             this.Padding = new Padding(borderSize);//Border size
             this.BackColor = Color.FromArgb(51, 51, 76);
-            btnCloseChild.Visible = false;
         }
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         private extern static void ReleaseCapture();
@@ -77,7 +76,6 @@ namespace ProjectQueenalya
                     panelLogo.BackColor = ThemeColor.ChangeColorBrightness(color, -0.2);
                     ThemeColor.PrimaryColor = color;
                     ThemeColor.SecondaryColor = ThemeColor.ChangeColorBrightness(color, -0.2);
-                    btnCloseChild.Visible = true;
                 }
             }
 
@@ -92,7 +90,6 @@ namespace ProjectQueenalya
                     previousBtn.BackColor = Color.FromArgb(51, 51, 76);
                     previousBtn.ForeColor = Color.White;
                     previousBtn.Font = new System.Drawing.Font("Verdana", 8.6F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-                    btnCloseChild.Visible = false;
                 }
             }
         }
@@ -236,14 +233,6 @@ namespace ProjectQueenalya
         {
             this.WindowState = FormWindowState.Minimized;
         }
-
-        private void btnCloseChild_Click(object sender, EventArgs e)
-        {
-            if (activeForm != null)
-                activeForm.Close();
-            Reset();
-        }
-
         private void btnSlide_Click(object sender, EventArgs e)
         {
             CollapseMenu_1();
@@ -270,12 +259,16 @@ namespace ProjectQueenalya
 
         private void btnSiswa_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new PebimbingDashboardForm.Siswa(), sender);
+            OpenChildForm(new AdminDashboardForm.FormSiswa(), sender);
+        }
+        private void PebimbingDashboard_Load(object sender, EventArgs e)
+        {
+            btnSiswa.PerformClick();
         }
 
-        private void btnInstansi_Click(object sender, EventArgs e)
+        private void btnAbsen_Click(object sender, EventArgs e)
         {
-            OpenChildForm(new PebimbingDashboardForm.Instansi(), sender);
+            OpenChildForm(new AdminDashboardForm.FormAbsen(), sender);
         }
     }
 }

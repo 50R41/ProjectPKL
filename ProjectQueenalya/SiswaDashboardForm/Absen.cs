@@ -12,6 +12,7 @@ namespace ProjectQueenalya.SiswaDashboardForm
 {
     public partial class Absen : Form
     {
+        /*Queryable=*/ //SELECT Absen.kehadiran , Absen.nama_siswa , COUNT(*) AS 'Jumlah' FROM Absen, Login WHERE Absen.nama_siswa = Login.nama AND Login.status = 'True' GROUP BY Absen.kehadiran , Absen.nama_siswa
         public Absen()
         {
             InitializeComponent();
@@ -52,6 +53,7 @@ namespace ProjectQueenalya.SiswaDashboardForm
             panel.Enabled = true;
             btnBatal.Visible = true;
             btnSimpan.Visible = true;
+            button3.Visible = false;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -62,6 +64,7 @@ namespace ProjectQueenalya.SiswaDashboardForm
                 btnBatal.Visible = false;
                 btnSimpan.Visible = false;
                 comboBox1.Text = "";
+                button3.Visible = true;
             }
         }
     }

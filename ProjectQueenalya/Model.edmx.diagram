@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="7fd6c8c46a3540dcbcf89c8c563daf33" Name="Diagram1">
+        <EntityTypeShape EntityType="PKLModel.Absen" Width="1.5" PointX="5.25" PointY="1.625" />
+        <EntityTypeShape EntityType="PKLModel.Guru" Width="1.5" PointX="3" PointY="4.875" />
+        <EntityTypeShape EntityType="PKLModel.Instansi" Width="1.5" PointX="0.75" PointY="3.125" />
+        <EntityTypeShape EntityType="PKLModel.Login" Width="1.5" PointX="4.875" PointY="4.5" />
+        <EntityTypeShape EntityType="PKLModel.Siswa" Width="1.5" PointX="3" PointY="1.125" />
+        <AssociationConnector Association="PKLModel.FK_Absen_Siswa" />
+        <AssociationConnector Association="PKLModel.FK_Guru_Instansi" />
+        <AssociationConnector Association="PKLModel.FK_Siswa_Instansi" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

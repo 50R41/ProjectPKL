@@ -1,0 +1,112 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PKLModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Absen">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="kehadiran" Type="varchar" MaxLength="10" Nullable="false" />
+    <Property Name="tanggal" Type="date" Nullable="false" />
+    <Property Name="nama_siswa" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="Guru">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nip" Type="bigint" Nullable="false" />
+    <Property Name="nama" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="alamat" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="no_hp" Type="bigint" Nullable="false" />
+    <Property Name="instansi_nama" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="foto_guru" Type="image" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Instansi">
+    <Key>
+      <PropertyRef Name="nama" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nama" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="alamat" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="foto_instansi" Type="image" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Login">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nama" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="role" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="status" Type="bit" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Siswa">
+    <Key>
+      <PropertyRef Name="nama" />
+    </Key>
+    <Property Name="id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="nis" Type="bigint" Nullable="false" />
+    <Property Name="nama" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="kelas" Type="varchar" MaxLength="20" Nullable="false" />
+    <Property Name="alamat" Type="varchar" MaxLength="300" Nullable="false" />
+    <Property Name="no_hp" Type="bigint" Nullable="false" />
+    <Property Name="instansi_nama" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="foto_siswa" Type="image" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_Absen_Siswa">
+    <End Role="Siswa" Type="Self.Siswa" Multiplicity="0..1" />
+    <End Role="Absen" Type="Self.Absen" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Siswa">
+        <PropertyRef Name="nama" />
+      </Principal>
+      <Dependent Role="Absen">
+        <PropertyRef Name="nama_siswa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Guru_Instansi">
+    <End Role="Instansi" Type="Self.Instansi" Multiplicity="1" />
+    <End Role="Guru" Type="Self.Guru" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Instansi">
+        <PropertyRef Name="nama" />
+      </Principal>
+      <Dependent Role="Guru">
+        <PropertyRef Name="instansi_nama" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_Siswa_Instansi">
+    <End Role="Instansi" Type="Self.Instansi" Multiplicity="1" />
+    <End Role="Siswa" Type="Self.Siswa" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Instansi">
+        <PropertyRef Name="nama" />
+      </Principal>
+      <Dependent Role="Siswa">
+        <PropertyRef Name="instansi_nama" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PKLModelStoreContainer">
+    <EntitySet Name="Absen" EntityType="Self.Absen" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Guru" EntityType="Self.Guru" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Instansi" EntityType="Self.Instansi" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Login" EntityType="Self.Login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Siswa" EntityType="Self.Siswa" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_Absen_Siswa" Association="Self.FK_Absen_Siswa">
+      <End Role="Siswa" EntitySet="Siswa" />
+      <End Role="Absen" EntitySet="Absen" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Guru_Instansi" Association="Self.FK_Guru_Instansi">
+      <End Role="Instansi" EntitySet="Instansi" />
+      <End Role="Guru" EntitySet="Guru" />
+    </AssociationSet>
+    <AssociationSet Name="FK_Siswa_Instansi" Association="Self.FK_Siswa_Instansi">
+      <End Role="Instansi" EntitySet="Instansi" />
+      <End Role="Siswa" EntitySet="Siswa" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

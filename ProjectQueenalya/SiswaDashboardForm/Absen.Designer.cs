@@ -137,6 +137,11 @@
             // 
             this.comboBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "Hadir",
+            "Izin",
+            "Sakit",
+            "Alfa"});
             this.comboBox1.Location = new System.Drawing.Point(83, 129);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(252, 21);
@@ -148,9 +153,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(80, 39);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
+            this.label1.Size = new System.Drawing.Size(29, 13);
             this.label1.TabIndex = 0;
-            this.label1.Text = "Hadir :";
+            this.label1.Text = "Izin :";
             // 
             // button3
             // 
@@ -193,6 +198,5 @@
         private System.Windows.Forms.ComboBox comboBox1;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button button3;
-
     }
 }

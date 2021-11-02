@@ -34,13 +34,12 @@
             this.btnMaximize = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.panelLogo = new System.Windows.Forms.Panel();
-            this.btnCloseChild = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
-            this.btnInstansi = new System.Windows.Forms.Button();
             this.btnSiswa = new System.Windows.Forms.Button();
+            this.panelLogo = new System.Windows.Forms.Panel();
             this.btnSlide = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnAbsen = new System.Windows.Forms.Button();
             this.panelTitleBar.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -59,7 +58,6 @@
             // panelTitleBar
             // 
             this.panelTitleBar.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(136)))));
-            this.panelTitleBar.Controls.Add(this.btnCloseChild);
             this.panelTitleBar.Controls.Add(this.btnMinimize);
             this.panelTitleBar.Controls.Add(this.btnMaximize);
             this.panelTitleBar.Controls.Add(this.lblTitle);
@@ -115,8 +113,8 @@
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.panelMenu.Controls.Add(this.btnAbsen);
             this.panelMenu.Controls.Add(this.btnLogout);
-            this.panelMenu.Controls.Add(this.btnInstansi);
             this.panelMenu.Controls.Add(this.btnSiswa);
             this.panelMenu.Controls.Add(this.panelLogo);
             this.panelMenu.Dock = System.Windows.Forms.DockStyle.Left;
@@ -124,32 +122,6 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(144, 359);
             this.panelMenu.TabIndex = 3;
-            // 
-            // panelLogo
-            // 
-            this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            this.panelLogo.Controls.Add(this.btnSlide);
-            this.panelLogo.Controls.Add(this.pictureBox1);
-            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLogo.Location = new System.Drawing.Point(0, 0);
-            this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(144, 55);
-            this.panelLogo.TabIndex = 0;
-            // 
-            // btnCloseChild
-            // 
-            this.btnCloseChild.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnCloseChild.FlatAppearance.BorderSize = 0;
-            this.btnCloseChild.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCloseChild.Font = new System.Drawing.Font("Mongolian Baiti", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCloseChild.ForeColor = System.Drawing.Color.White;
-            this.btnCloseChild.Image = global::ProjectQueenalya.Properties.Resources.Beranda_24x241;
-            this.btnCloseChild.Location = new System.Drawing.Point(0, 0);
-            this.btnCloseChild.Name = "btnCloseChild";
-            this.btnCloseChild.Size = new System.Drawing.Size(20, 42);
-            this.btnCloseChild.TabIndex = 7;
-            this.btnCloseChild.UseVisualStyleBackColor = true;
-            this.btnCloseChild.Click += new System.EventHandler(this.btnCloseChild_Click);
             // 
             // btnLogout
             // 
@@ -170,24 +142,6 @@
             this.btnLogout.UseVisualStyleBackColor = true;
             this.btnLogout.Click += new System.EventHandler(this.btnLogout_Click);
             // 
-            // btnInstansi
-            // 
-            this.btnInstansi.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnInstansi.FlatAppearance.BorderSize = 0;
-            this.btnInstansi.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnInstansi.Font = new System.Drawing.Font("Verdana", 8.6F);
-            this.btnInstansi.ForeColor = System.Drawing.Color.White;
-            this.btnInstansi.Image = global::ProjectQueenalya.Properties.Resources.overload;
-            this.btnInstansi.Location = new System.Drawing.Point(0, 103);
-            this.btnInstansi.Name = "btnInstansi";
-            this.btnInstansi.Size = new System.Drawing.Size(144, 48);
-            this.btnInstansi.TabIndex = 2;
-            this.btnInstansi.Tag = "   Instansi";
-            this.btnInstansi.Text = "instansi";
-            this.btnInstansi.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnInstansi.UseVisualStyleBackColor = true;
-            this.btnInstansi.Click += new System.EventHandler(this.btnInstansi_Click);
-            // 
             // btnSiswa
             // 
             this.btnSiswa.Dock = System.Windows.Forms.DockStyle.Top;
@@ -205,6 +159,17 @@
             this.btnSiswa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSiswa.UseVisualStyleBackColor = true;
             this.btnSiswa.Click += new System.EventHandler(this.btnSiswa_Click);
+            // 
+            // panelLogo
+            // 
+            this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            this.panelLogo.Controls.Add(this.btnSlide);
+            this.panelLogo.Controls.Add(this.pictureBox1);
+            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelLogo.Location = new System.Drawing.Point(0, 0);
+            this.panelLogo.Name = "panelLogo";
+            this.panelLogo.Size = new System.Drawing.Size(144, 55);
+            this.panelLogo.TabIndex = 0;
             // 
             // btnSlide
             // 
@@ -229,6 +194,24 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
+            // btnAbsen
+            // 
+            this.btnAbsen.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAbsen.FlatAppearance.BorderSize = 0;
+            this.btnAbsen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAbsen.Font = new System.Drawing.Font("Verdana", 8.6F);
+            this.btnAbsen.ForeColor = System.Drawing.Color.White;
+            this.btnAbsen.Image = global::ProjectQueenalya.Properties.Resources.verified_user;
+            this.btnAbsen.Location = new System.Drawing.Point(0, 103);
+            this.btnAbsen.Name = "btnAbsen";
+            this.btnAbsen.Size = new System.Drawing.Size(144, 48);
+            this.btnAbsen.TabIndex = 6;
+            this.btnAbsen.Tag = "   Absen";
+            this.btnAbsen.Text = "Absen";
+            this.btnAbsen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAbsen.UseVisualStyleBackColor = true;
+            this.btnAbsen.Click += new System.EventHandler(this.btnAbsen_Click);
+            // 
             // PebimbingDashboard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -240,6 +223,7 @@
             this.Name = "PebimbingDashboard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PebimbingDashboard";
+            this.Load += new System.EventHandler(this.PebimbingDashboard_Load);
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
             this.panelMenu.ResumeLayout(false);
@@ -253,16 +237,15 @@
 
         private System.Windows.Forms.Panel panelDesktop;
         private System.Windows.Forms.Panel panelTitleBar;
-        private System.Windows.Forms.Button btnCloseChild;
         private System.Windows.Forms.Button btnMinimize;
         private System.Windows.Forms.Button btnMaximize;
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Panel panelMenu;
         private System.Windows.Forms.Button btnLogout;
-        private System.Windows.Forms.Button btnInstansi;
         private System.Windows.Forms.Button btnSiswa;
         private System.Windows.Forms.Panel panelLogo;
         private System.Windows.Forms.Button btnSlide;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnAbsen;
     }
 }

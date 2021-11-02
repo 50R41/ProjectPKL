@@ -163,10 +163,16 @@
   <data name="menu(2)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\menu(2).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="Tak_berjudul29_20210828145807_1_24x24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tak_berjudul29_20210828145807_1_24x24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="1629078054851(2)(1)" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\1629078054851(2)(1).png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="menu" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\menu.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="Tak_berjudul29_20210828145807_1_24x241" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Tak_berjudul29_20210828145807_1_24x241.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>
