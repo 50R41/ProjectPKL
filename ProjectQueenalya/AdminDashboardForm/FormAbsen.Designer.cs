@@ -37,23 +37,23 @@ namespace ProjectQueenalya.AdminDashboardForm
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnCari = new System.Windows.Forms.Button();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.namasiswaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.kehadiranDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tanggalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.absenBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pKLDataSet = new ProjectQueenalya.PKLDataSet();
             this.btnEditShow = new System.Windows.Forms.Button();
             this.panel = new System.Windows.Forms.Panel();
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.label2 = new System.Windows.Forms.Label();
             this.btnHapusTanggal = new System.Windows.Forms.Button();
             this.btnHapusAll = new System.Windows.Forms.Button();
-            this.pKLDataSet = new ProjectQueenalya.PKLDataSet();
-            this.absenBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.absenTableAdapter = new ProjectQueenalya.PKLDataSetTableAdapters.AbsenTableAdapter();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.namasiswaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kehadiranDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.tanggalDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.panel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pKLDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.absenBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pKLDataSet)).BeginInit();
+            this.panel.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtCari
@@ -147,6 +147,41 @@ namespace ProjectQueenalya.AdminDashboardForm
             this.dataGridView1.Size = new System.Drawing.Size(287, 387);
             this.dataGridView1.TabIndex = 59;
             // 
+            // idDataGridViewTextBoxColumn
+            // 
+            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
+            this.idDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // namasiswaDataGridViewTextBoxColumn
+            // 
+            this.namasiswaDataGridViewTextBoxColumn.DataPropertyName = "nama_siswa";
+            this.namasiswaDataGridViewTextBoxColumn.HeaderText = "Nama Siswa";
+            this.namasiswaDataGridViewTextBoxColumn.Name = "namasiswaDataGridViewTextBoxColumn";
+            // 
+            // kehadiranDataGridViewTextBoxColumn
+            // 
+            this.kehadiranDataGridViewTextBoxColumn.DataPropertyName = "kehadiran";
+            this.kehadiranDataGridViewTextBoxColumn.HeaderText = "Kehadiran";
+            this.kehadiranDataGridViewTextBoxColumn.Name = "kehadiranDataGridViewTextBoxColumn";
+            // 
+            // tanggalDataGridViewTextBoxColumn
+            // 
+            this.tanggalDataGridViewTextBoxColumn.DataPropertyName = "tanggal";
+            this.tanggalDataGridViewTextBoxColumn.HeaderText = "Tanggal";
+            this.tanggalDataGridViewTextBoxColumn.Name = "tanggalDataGridViewTextBoxColumn";
+            // 
+            // absenBindingSource
+            // 
+            this.absenBindingSource.DataMember = "Absen";
+            this.absenBindingSource.DataSource = this.pKLDataSet;
+            // 
+            // pKLDataSet
+            // 
+            this.pKLDataSet.DataSetName = "PKLDataSet";
+            this.pKLDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // btnEditShow
             // 
             this.btnEditShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -216,44 +251,9 @@ namespace ProjectQueenalya.AdminDashboardForm
             this.btnHapusAll.UseVisualStyleBackColor = true;
             this.btnHapusAll.Click += new System.EventHandler(this.btnHapusAll_Click);
             // 
-            // pKLDataSet
-            // 
-            this.pKLDataSet.DataSetName = "PKLDataSet";
-            this.pKLDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // absenBindingSource
-            // 
-            this.absenBindingSource.DataMember = "Absen";
-            this.absenBindingSource.DataSource = this.pKLDataSet;
-            // 
             // absenTableAdapter
             // 
             this.absenTableAdapter.ClearBeforeFill = true;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // namasiswaDataGridViewTextBoxColumn
-            // 
-            this.namasiswaDataGridViewTextBoxColumn.DataPropertyName = "nama_siswa";
-            this.namasiswaDataGridViewTextBoxColumn.HeaderText = "Nama Siswa";
-            this.namasiswaDataGridViewTextBoxColumn.Name = "namasiswaDataGridViewTextBoxColumn";
-            // 
-            // kehadiranDataGridViewTextBoxColumn
-            // 
-            this.kehadiranDataGridViewTextBoxColumn.DataPropertyName = "kehadiran";
-            this.kehadiranDataGridViewTextBoxColumn.HeaderText = "Kehadiran";
-            this.kehadiranDataGridViewTextBoxColumn.Name = "kehadiranDataGridViewTextBoxColumn";
-            // 
-            // tanggalDataGridViewTextBoxColumn
-            // 
-            this.tanggalDataGridViewTextBoxColumn.DataPropertyName = "tanggal";
-            this.tanggalDataGridViewTextBoxColumn.HeaderText = "Tanggal";
-            this.tanggalDataGridViewTextBoxColumn.Name = "tanggalDataGridViewTextBoxColumn";
             // 
             // FormAbsen
             // 
@@ -268,13 +268,13 @@ namespace ProjectQueenalya.AdminDashboardForm
             this.Controls.Add(this.dataGridView1);
             this.Controls.Add(this.btnEditShow);
             this.Name = "FormAbsen";
-            this.Text = "FormAbsen";
+            this.Text = "Absen";
             this.Load += new System.EventHandler(this.FormAbsen_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.absenBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pKLDataSet)).EndInit();
             this.panel.ResumeLayout(false);
             this.panel.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pKLDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.absenBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

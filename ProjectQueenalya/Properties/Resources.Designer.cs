@@ -173,6 +173,56 @@ namespace ProjectQueenalya.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap Tak_berjudul1227_20211105133537 {
+            get {
+                object obj = ResourceManager.GetObject("Tak berjudul1227_20211105133537", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tak_berjudul1227_202111051335371 {
+            get {
+                object obj = ResourceManager.GetObject("Tak berjudul1227_202111051335371", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tak_berjudul1227_20211106143248 {
+            get {
+                object obj = ResourceManager.GetObject("Tak berjudul1227_20211106143248", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tak_berjudul1227_202111061432481 {
+            get {
+                object obj = ResourceManager.GetObject("Tak berjudul1227_202111061432481", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap Tak_berjudul1227_20211106145620 {
+            get {
+                object obj = ResourceManager.GetObject("Tak berjudul1227_20211106145620", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap Tak_berjudul28_20210827202129_12x12 {
             get {
                 object obj = ResourceManager.GetObject("Tak_berjudul28_20210827202129_12x12", resourceCulture);

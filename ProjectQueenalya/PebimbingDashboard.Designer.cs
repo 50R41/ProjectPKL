@@ -34,12 +34,12 @@
             this.btnMaximize = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.panelLogo = new System.Windows.Forms.Panel();
+            this.btnAbsen = new System.Windows.Forms.Button();
             this.btnLogout = new System.Windows.Forms.Button();
             this.btnSiswa = new System.Windows.Forms.Button();
-            this.panelLogo = new System.Windows.Forms.Panel();
             this.btnSlide = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.btnAbsen = new System.Windows.Forms.Button();
             this.panelTitleBar.SuspendLayout();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
@@ -123,6 +123,35 @@
             this.panelMenu.Size = new System.Drawing.Size(144, 359);
             this.panelMenu.TabIndex = 3;
             // 
+            // panelLogo
+            // 
+            this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
+            this.panelLogo.Controls.Add(this.btnSlide);
+            this.panelLogo.Controls.Add(this.pictureBox1);
+            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelLogo.Location = new System.Drawing.Point(0, 0);
+            this.panelLogo.Name = "panelLogo";
+            this.panelLogo.Size = new System.Drawing.Size(144, 55);
+            this.panelLogo.TabIndex = 0;
+            // 
+            // btnAbsen
+            // 
+            this.btnAbsen.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnAbsen.FlatAppearance.BorderSize = 0;
+            this.btnAbsen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAbsen.Font = new System.Drawing.Font("Verdana", 8.6F);
+            this.btnAbsen.ForeColor = System.Drawing.Color.White;
+            this.btnAbsen.Image = global::ProjectQueenalya.Properties.Resources.verified_user;
+            this.btnAbsen.Location = new System.Drawing.Point(0, 103);
+            this.btnAbsen.Name = "btnAbsen";
+            this.btnAbsen.Size = new System.Drawing.Size(144, 48);
+            this.btnAbsen.TabIndex = 6;
+            this.btnAbsen.Tag = "   Absen";
+            this.btnAbsen.Text = "Absen";
+            this.btnAbsen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAbsen.UseVisualStyleBackColor = true;
+            this.btnAbsen.Click += new System.EventHandler(this.btnAbsen_Click);
+            // 
             // btnLogout
             // 
             this.btnLogout.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -131,10 +160,10 @@
             this.btnLogout.Font = new System.Drawing.Font("Verdana", 8.6F);
             this.btnLogout.ForeColor = System.Drawing.Color.White;
             this.btnLogout.Image = global::ProjectQueenalya.Properties.Resources.logout;
-            this.btnLogout.Location = new System.Drawing.Point(0, 311);
+            this.btnLogout.Location = new System.Drawing.Point(0, 286);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Padding = new System.Windows.Forms.Padding(0, 0, 0, 15);
-            this.btnLogout.Size = new System.Drawing.Size(144, 48);
+            this.btnLogout.Size = new System.Drawing.Size(144, 73);
             this.btnLogout.TabIndex = 4;
             this.btnLogout.Tag = "   Keluar";
             this.btnLogout.Text = "logout";
@@ -160,17 +189,6 @@
             this.btnSiswa.UseVisualStyleBackColor = true;
             this.btnSiswa.Click += new System.EventHandler(this.btnSiswa_Click);
             // 
-            // panelLogo
-            // 
-            this.panelLogo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(39)))), ((int)(((byte)(39)))), ((int)(((byte)(58)))));
-            this.panelLogo.Controls.Add(this.btnSlide);
-            this.panelLogo.Controls.Add(this.pictureBox1);
-            this.panelLogo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelLogo.Location = new System.Drawing.Point(0, 0);
-            this.panelLogo.Name = "panelLogo";
-            this.panelLogo.Size = new System.Drawing.Size(144, 55);
-            this.panelLogo.TabIndex = 0;
-            // 
             // btnSlide
             // 
             this.btnSlide.Dock = System.Windows.Forms.DockStyle.Right;
@@ -187,30 +205,14 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 3);
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::ProjectQueenalya.Properties.Resources.Tak_berjudul1227_20211106145620;
+            this.pictureBox1.Location = new System.Drawing.Point(-26, -18);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(95, 46);
-            this.pictureBox1.TabIndex = 2;
+            this.pictureBox1.Size = new System.Drawing.Size(180, 85);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 3;
             this.pictureBox1.TabStop = false;
-            // 
-            // btnAbsen
-            // 
-            this.btnAbsen.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnAbsen.FlatAppearance.BorderSize = 0;
-            this.btnAbsen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnAbsen.Font = new System.Drawing.Font("Verdana", 8.6F);
-            this.btnAbsen.ForeColor = System.Drawing.Color.White;
-            this.btnAbsen.Image = global::ProjectQueenalya.Properties.Resources.verified_user;
-            this.btnAbsen.Location = new System.Drawing.Point(0, 103);
-            this.btnAbsen.Name = "btnAbsen";
-            this.btnAbsen.Size = new System.Drawing.Size(144, 48);
-            this.btnAbsen.TabIndex = 6;
-            this.btnAbsen.Tag = "   Absen";
-            this.btnAbsen.Text = "Absen";
-            this.btnAbsen.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnAbsen.UseVisualStyleBackColor = true;
-            this.btnAbsen.Click += new System.EventHandler(this.btnAbsen_Click);
             // 
             // PebimbingDashboard
             // 
@@ -224,6 +226,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "PebimbingDashboard";
             this.Load += new System.EventHandler(this.PebimbingDashboard_Load);
+            this.Resize += new System.EventHandler(this.PebimbingDashboard_Resize);
             this.panelTitleBar.ResumeLayout(false);
             this.panelTitleBar.PerformLayout();
             this.panelMenu.ResumeLayout(false);
@@ -245,7 +248,7 @@
         private System.Windows.Forms.Button btnSiswa;
         private System.Windows.Forms.Panel panelLogo;
         private System.Windows.Forms.Button btnSlide;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnAbsen;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -42,25 +42,29 @@ namespace ProjectQueenalya
                 {
                     ConLogin bukaFungsi = new ConLogin();
                     DataTable dt = new DataTable();
-                    string query = "select username,password,role from login where username='{0}'and password='{1}'";
+                    string query = "select nama,username,password,role from Login where username='{0}'and password='{1}'";
                     query = string.Format(query, txtUSER.Text, txtPASS.Text);
                     dt = bukaFungsi.BukaTable(query);
                     if (dt.Rows.Count > 0)
                     {
-                        MessageBox.Show("Login berhasil ! , anda login sebagai : " + dt.Rows[0][2].ToString() + "", "PKL SMKN 2 SUKABUMI", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        if (dt.Rows[0][2].ToString() == "admin")
+                        MessageBox.Show("Login berhasil ! , anda login sebagai : " + dt.Rows[0]["role"].ToString() + "", "PKL SMKN 2 SUKABUMI", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoginStatus.nama = dt.Rows[0]["nama"].ToString();
+                        LoginStatus.username = dt.Rows[0]["username"].ToString();
+                        LoginStatus.password = dt.Rows[0]["password"].ToString();
+                        LoginStatus.role = dt.Rows[0]["role"].ToString();
+                        if (dt.Rows[0]["role"].ToString() == "admin")
                         {
                             AdminDashboard sd = new AdminDashboard();
                             sd.Show();
                             this.Hide();
                         }
-                        if (dt.Rows[0][2].ToString() == "pembimbing")
+                        if (dt.Rows[0]["role"].ToString() == "pembimbing")
                         {
                             PebimbingDashboard sd = new PebimbingDashboard();
                             sd.Show();
                             this.Hide();
                         }
-                        if (dt.Rows[0][2].ToString() == "siswa")
+                        if (dt.Rows[0]["role"].ToString() == "siswa")
                         {
                             SiswaDashboard sd = new SiswaDashboard();
                             sd.Show();
@@ -69,14 +73,14 @@ namespace ProjectQueenalya
                     }
                     else
                     {
-                        MessageBox.Show("Username atau password anda salah..", "PKL SMKN 2 SUKABUMI", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Username atau password anda salah..", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
             catch (Exception ex)
             {
 
-                MessageBox.Show(ex.Message, "MEA PERJAKA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show(ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 

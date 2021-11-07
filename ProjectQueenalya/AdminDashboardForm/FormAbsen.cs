@@ -108,7 +108,7 @@ namespace ProjectQueenalya.AdminDashboardForm
             }
             catch (Exception ms)
             {
-                MessageBox.Show(ms.Message, "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ms.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -136,7 +136,7 @@ namespace ProjectQueenalya.AdminDashboardForm
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -178,7 +178,7 @@ namespace ProjectQueenalya.AdminDashboardForm
         {
             if (txtID.Text == "")
             {
-                MessageBox.Show("Tolong masukan id siswa yang ingin di hapus !", "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Tolong masukan id siswa yang ingin di hapus !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else
@@ -197,7 +197,7 @@ namespace ProjectQueenalya.AdminDashboardForm
 
                                     cmds.Parameters.AddWithValue("ID", txtID.Text);
                                     cmds.ExecuteNonQuery();
-                                    if (MessageBox.Show("Berhasil Menghapus data !", "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+                                    if (MessageBox.Show("Berhasil Menghapus data !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
                                     {
                                         txtID.Text = "";
                                         btnCancel.Visible = false;
@@ -211,7 +211,7 @@ namespace ProjectQueenalya.AdminDashboardForm
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -221,7 +221,7 @@ namespace ProjectQueenalya.AdminDashboardForm
         {
             if (txtID.Text == "")
             {
-                MessageBox.Show("Tolong masukan id siswa yang ingin di hapus !", "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Tolong masukan id siswa yang ingin di hapus !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else
@@ -235,7 +235,7 @@ namespace ProjectQueenalya.AdminDashboardForm
                             cn.Open();
                             using (DataTable dt = new DataTable("Absen"))
                             {
-                                if (MessageBox.Show("Apakah tanggalnya sudah benar ?", "PERJAKA MEA", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                                if (MessageBox.Show("Apakah tanggalnya sudah benar ?", "PROPLACE MEA", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                                 {
                                     using (SqlCommand cmds = new SqlCommand("DELETE Absen WHERE siswa_id=@ID AND tanggal=@tgl", cn))
                                     {
@@ -243,7 +243,7 @@ namespace ProjectQueenalya.AdminDashboardForm
                                         cmds.Parameters.AddWithValue("ID", txtID.Text);
                                         cmds.Parameters.AddWithValue("tgl" , dateTimePicker1.Value.Date);
                                         cmds.ExecuteNonQuery();
-                                        if (MessageBox.Show("Berhasil Menghapus data !", "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+                                        if (MessageBox.Show("Berhasil Menghapus data !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
                                         {
                                             txtID.Text = "";
                                             btnCancel.Visible = false;
@@ -258,7 +258,7 @@ namespace ProjectQueenalya.AdminDashboardForm
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

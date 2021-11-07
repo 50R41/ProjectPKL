@@ -148,10 +148,10 @@
             this.btnLogout.Font = new System.Drawing.Font("Verdana", 8.6F);
             this.btnLogout.ForeColor = System.Drawing.Color.White;
             this.btnLogout.Image = global::ProjectQueenalya.Properties.Resources.logout;
-            this.btnLogout.Location = new System.Drawing.Point(0, 381);
+            this.btnLogout.Location = new System.Drawing.Point(0, 360);
             this.btnLogout.Name = "btnLogout";
             this.btnLogout.Padding = new System.Windows.Forms.Padding(0, 0, 0, 15);
-            this.btnLogout.Size = new System.Drawing.Size(144, 48);
+            this.btnLogout.Size = new System.Drawing.Size(144, 69);
             this.btnLogout.TabIndex = 4;
             this.btnLogout.Tag = "   Keluar";
             this.btnLogout.Text = "Logout";
@@ -264,10 +264,12 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.White;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 3);
+            this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
+            this.pictureBox1.Image = global::ProjectQueenalya.Properties.Resources.Tak_berjudul1227_20211106145620;
+            this.pictureBox1.Location = new System.Drawing.Point(-24, -16);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(95, 46);
+            this.pictureBox1.Size = new System.Drawing.Size(180, 85);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 

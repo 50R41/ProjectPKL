@@ -203,20 +203,6 @@ namespace ProjectQueenalya
                 }
             }
         }
-       
-        private void AdjustForm_1()
-        {
-            switch (this.WindowState)
-            {
-                case FormWindowState.Maximized: 
-                    this.Padding = new Padding(8, 8, 8, 0);
-                    break;
-                case FormWindowState.Normal: 
-                    if (this.Padding.Top != borderSize)
-                        this.Padding = new Padding(borderSize);
-                    break;
-            }
-        }
         private void btnMaximize_Click(object sender, EventArgs e)
         {
             if (this.WindowState == FormWindowState.Normal)
@@ -269,6 +255,11 @@ namespace ProjectQueenalya
         private void btnAbsen_Click(object sender, EventArgs e)
         {
             OpenChildForm(new AdminDashboardForm.FormAbsen(), sender);
+        }
+
+        private void PebimbingDashboard_Resize(object sender, EventArgs e)
+        {
+            AdjustForm();
         }
     }
 }

@@ -59,6 +59,7 @@ namespace ProjectQueenalya.AdminDashboardForm
             Auto();
             btnRefresh.PerformClick();
             AutoNama();
+            AutoID();
         }
         private void Auto()
         {
@@ -105,6 +106,32 @@ namespace ProjectQueenalya.AdminDashboardForm
                     txtNama.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
                     txtNama.AutoCompleteSource = AutoCompleteSource.CustomSource;
                     txtNama.AutoCompleteCustomSource = MyCollection;
+                    con.Close();
+                }
+            }
+            catch (Exception ead)
+            {
+                MessageBox.Show(ead.Message);
+            }
+        }
+        private void AutoID()
+        {
+            try
+            {
+                string ConString = ConfigurationManager.ConnectionStrings["PklConSTR"].ConnectionString;
+                using (SqlConnection con = new SqlConnection(ConString))
+                {
+                    SqlCommand cmd = new SqlCommand("SELECT nip, nis FROM Guru, Siswa", con);
+                    con.Open();
+                    SqlDataReader reader = cmd.ExecuteReader();
+                    AutoCompleteStringCollection MyCollection = new AutoCompleteStringCollection();
+                    while (reader.Read())
+                    {
+                        MyCollection.Add(reader["nip"].ToString());
+                    }
+                    txtUser.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                    txtUser.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                    txtUser.AutoCompleteCustomSource = MyCollection;
                     con.Close();
                 }
             }
@@ -207,7 +234,7 @@ namespace ProjectQueenalya.AdminDashboardForm
                                     s.role = comboBoxRole.Text;
                                     dsf.Logins.Add(s);
                                     dsf.SaveChanges();
-                                    if (MessageBox.Show("Berhasil Menginput Data !", "PERJAKA MEA", MessageBoxButtons.OK) == DialogResult.OK)
+                                    if (MessageBox.Show("Berhasil Menginput Data !", "PROPLACE MEA", MessageBoxButtons.OK) == DialogResult.OK)
                                     {
                                         txtID.Text = "";
                                         txtNama.Text = "";
@@ -224,12 +251,12 @@ namespace ProjectQueenalya.AdminDashboardForm
                             }
                             catch (Exception)
                             {
-                                MessageBox.Show("Periksa lagi data yang ingin disimpan !", "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Periksa lagi data yang ingin disimpan !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Nama : " + txtNama.Text + " Belum ada !", "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Nama : " + txtNama.Text + " Belum ada !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -240,7 +267,7 @@ namespace ProjectQueenalya.AdminDashboardForm
         {
             if (txtNama.Text == "" || txtID.Text == "" || comboBoxRole.SelectedIndex == -1 || comboBoxStatus.SelectedIndex == -1)
             {
-                MessageBox.Show("Tolong masukan data yang ingin di edit ! atau bisa click datanya di bawah !", "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Tolong masukan data yang ingin di edit ! atau bisa click datanya di bawah !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else
@@ -264,7 +291,7 @@ namespace ProjectQueenalya.AdminDashboardForm
                                     cmds.Parameters.AddWithValue("role", comboBoxRole.Text);
                                     cmds.Parameters.AddWithValue("status" , comboBoxStatus.Text);
                                     cmds.ExecuteNonQuery();
-                                    if (MessageBox.Show("Berhasil Mengupdate data !", "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+                                    if (MessageBox.Show("Berhasil Mengupdate data !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
                                     {
                                         txtID.Text = "";
                                         txtNama.Text = "";
@@ -284,7 +311,7 @@ namespace ProjectQueenalya.AdminDashboardForm
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -314,7 +341,7 @@ namespace ProjectQueenalya.AdminDashboardForm
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -342,7 +369,7 @@ namespace ProjectQueenalya.AdminDashboardForm
             }
             catch (Exception ms)
             {
-                MessageBox.Show(ms.Message, "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ms.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -383,7 +410,7 @@ namespace ProjectQueenalya.AdminDashboardForm
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -393,18 +420,18 @@ namespace ProjectQueenalya.AdminDashboardForm
             {
                 if (e.KeyCode == Keys.Delete)
                 {
-                    if (MessageBox.Show("Apakah Kamu yakin ingin menghapusnya ?", "PERJAKA MEA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (MessageBox.Show("Apakah Kamu yakin ingin menghapusnya ?", "PROPLACE MEA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         dsf.Logins.Remove(loginBindingSource.Current as Login);
                         loginBindingSource.RemoveCurrent();
                         dsf.SaveChangesAsync();
-                        MessageBox.Show("Data berhasil di hapus !", "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Data berhasil di hapus !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

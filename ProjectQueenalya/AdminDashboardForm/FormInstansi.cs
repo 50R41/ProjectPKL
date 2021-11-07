@@ -177,7 +177,7 @@ namespace ProjectQueenalya.AdminDashboardForm
                         int i = ds.Tables[0].Rows.Count;
                         if (i > 0)
                         {
-                            MessageBox.Show("Nama : " + txtNama.Text + " Sudah ada !", "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Nama : " + txtNama.Text + " Sudah ada !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                         else
                         {
@@ -191,7 +191,7 @@ namespace ProjectQueenalya.AdminDashboardForm
                                     s.foto_instansi = ConvertFoto(this.pbImage.ImageLocation);
                                     test.Instansis.Add(s);
                                     test.SaveChanges();
-                                    if (MessageBox.Show("Berhasil Menginput Data !", "PERJAKA MEA", MessageBoxButtons.OK) == DialogResult.OK)
+                                    if (MessageBox.Show("Berhasil Menginput Data !", "PROPLACE MEA", MessageBoxButtons.OK) == DialogResult.OK)
                                     {
                                         txtID.Text = "";
                                         txtNama.Text = "";
@@ -206,7 +206,7 @@ namespace ProjectQueenalya.AdminDashboardForm
                             }
                             catch (Exception)
                             {
-                                MessageBox.Show("Periksa lagi data yang ingin disimpan !", "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Periksa lagi data yang ingin disimpan !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                     }
@@ -218,7 +218,7 @@ namespace ProjectQueenalya.AdminDashboardForm
         {
             if (txtNama.Text == "" || txtAlamat.Text == "" || txtID.Text == "")
             {
-                MessageBox.Show("Tolong masukan data yang ingin di edit ! atau bisa click datanya di bawah !", "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Tolong masukan data yang ingin di edit ! atau bisa click datanya di bawah !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else
@@ -240,7 +240,7 @@ namespace ProjectQueenalya.AdminDashboardForm
                                     cmds.Parameters.AddWithValue("Alamat", txtAlamat.Text);
                                     cmds.Parameters.AddWithValue("foto" , ConvertFoto(this.pbImage.ImageLocation));
                                     cmds.ExecuteNonQuery();
-                                    if (MessageBox.Show("Berhasil Mengupdate data !", "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+                                    if (MessageBox.Show("Berhasil Mengupdate data !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
                                     {
                                         txtID.Text = "";
                                         txtNama.Text = "";
@@ -258,7 +258,7 @@ namespace ProjectQueenalya.AdminDashboardForm
                     }
                     catch (Exception ex)
                     {
-                        MessageBox.Show(ex.Message, "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show(ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -281,7 +281,7 @@ namespace ProjectQueenalya.AdminDashboardForm
             }
             catch (Exception ex)
             {
-                MessageBox.Show( ex.Message, "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show( ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -291,18 +291,18 @@ namespace ProjectQueenalya.AdminDashboardForm
             {
                 if (e.KeyCode == Keys.Delete)
                 {
-                    if (MessageBox.Show("Apakah Kamu yakin ingin menghapusnya ?", "PERJAKA MEA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (MessageBox.Show("Apakah Kamu yakin ingin menghapusnya ?", "PROPLACE MEA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         test.Instansis.Remove(instansiBindingSource.Current as Instansi);
                         instansiBindingSource.RemoveCurrent();
                         test.SaveChangesAsync();
-                        MessageBox.Show("Data berhasil di hapus !" , "PERJAKA MEA" , MessageBoxButtons.OK , MessageBoxIcon.Information);
+                        MessageBox.Show("Data berhasil di hapus !" , "PROPLACE MEA" , MessageBoxButtons.OK , MessageBoxIcon.Information);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -330,7 +330,7 @@ namespace ProjectQueenalya.AdminDashboardForm
             }
             catch (Exception ms)
             {
-                MessageBox.Show(ms.Message, "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ms.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -358,7 +358,7 @@ namespace ProjectQueenalya.AdminDashboardForm
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -378,12 +378,12 @@ namespace ProjectQueenalya.AdminDashboardForm
                     // free the file once we get the dimensions
                     using (Image image = Image.FromFile(openFileDialog.FileName))
                     {
-                        validDimensions = (image.Width <= 350) && (image.Height <= 350);
+                        validDimensions = (image.Width <= 255) && (image.Height <= 330);
                     }
 
                     if (!validDimensions || !validFilesize)
                     {
-                        MessageBox.Show("Error ! Gambar terlalu besar . . . Dimensinya maksimal 350x350 !" , "PERJAKA MEA" , MessageBoxButtons.OK , MessageBoxIcon.Error);
+                        MessageBox.Show("Error ! Gambar terlalu besar . . . Dimensinya maksimal 255x330 !" , "PROPLACE MEA" , MessageBoxButtons.OK , MessageBoxIcon.Error);
                     }
                     else
                     {

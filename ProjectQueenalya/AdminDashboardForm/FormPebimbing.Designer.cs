@@ -31,6 +31,8 @@ namespace ProjectQueenalya.AdminDashboardForm
         {
             this.components = new System.ComponentModel.Container();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.guruBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pKLDataSet = new ProjectQueenalya.PKLDataSet();
             this.txtNIP = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel = new System.Windows.Forms.Panel();
@@ -53,8 +55,6 @@ namespace ProjectQueenalya.AdminDashboardForm
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnTambah = new System.Windows.Forms.Button();
             this.txtCari = new System.Windows.Forms.TextBox();
-            this.pKLDataSet = new ProjectQueenalya.PKLDataSet();
-            this.guruBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.guruTableAdapter = new ProjectQueenalya.PKLDataSetTableAdapters.GuruTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.nipDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -64,10 +64,10 @@ namespace ProjectQueenalya.AdminDashboardForm
             this.instansinamaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.fotoguruDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guruBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pKLDataSet)).BeginInit();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pKLDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guruBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // dataGridView1
@@ -96,6 +96,16 @@ namespace ProjectQueenalya.AdminDashboardForm
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
+            // 
+            // guruBindingSource
+            // 
+            this.guruBindingSource.DataMember = "Guru";
+            this.guruBindingSource.DataSource = this.pKLDataSet;
+            // 
+            // pKLDataSet
+            // 
+            this.pKLDataSet.DataSetName = "PKLDataSet";
+            this.pKLDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
             // 
             // txtNIP
             // 
@@ -346,16 +356,6 @@ namespace ProjectQueenalya.AdminDashboardForm
             this.txtCari.Enter += new System.EventHandler(this.txtCari_Enter);
             this.txtCari.Leave += new System.EventHandler(this.txtCari_Leave);
             // 
-            // pKLDataSet
-            // 
-            this.pKLDataSet.DataSetName = "PKLDataSet";
-            this.pKLDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // guruBindingSource
-            // 
-            this.guruBindingSource.DataMember = "Guru";
-            this.guruBindingSource.DataSource = this.pKLDataSet;
-            // 
             // guruTableAdapter
             // 
             this.guruTableAdapter.ClearBeforeFill = true;
@@ -363,44 +363,52 @@ namespace ProjectQueenalya.AdminDashboardForm
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.FillWeight = 20F;
+            this.idDataGridViewTextBoxColumn.HeaderText = "ID";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // nipDataGridViewTextBoxColumn
             // 
             this.nipDataGridViewTextBoxColumn.DataPropertyName = "nip";
-            this.nipDataGridViewTextBoxColumn.HeaderText = "nip";
+            this.nipDataGridViewTextBoxColumn.FillWeight = 45F;
+            this.nipDataGridViewTextBoxColumn.HeaderText = "NIP";
             this.nipDataGridViewTextBoxColumn.Name = "nipDataGridViewTextBoxColumn";
             // 
             // namaDataGridViewTextBoxColumn
             // 
             this.namaDataGridViewTextBoxColumn.DataPropertyName = "nama";
-            this.namaDataGridViewTextBoxColumn.HeaderText = "nama";
+            this.namaDataGridViewTextBoxColumn.FillWeight = 90F;
+            this.namaDataGridViewTextBoxColumn.HeaderText = "Nama";
             this.namaDataGridViewTextBoxColumn.Name = "namaDataGridViewTextBoxColumn";
             // 
             // alamatDataGridViewTextBoxColumn
             // 
             this.alamatDataGridViewTextBoxColumn.DataPropertyName = "alamat";
-            this.alamatDataGridViewTextBoxColumn.HeaderText = "alamat";
+            this.alamatDataGridViewTextBoxColumn.FillWeight = 90F;
+            this.alamatDataGridViewTextBoxColumn.HeaderText = "Alamat";
             this.alamatDataGridViewTextBoxColumn.Name = "alamatDataGridViewTextBoxColumn";
             // 
             // nohpDataGridViewTextBoxColumn
             // 
             this.nohpDataGridViewTextBoxColumn.DataPropertyName = "no_hp";
-            this.nohpDataGridViewTextBoxColumn.HeaderText = "no_hp";
+            this.nohpDataGridViewTextBoxColumn.FillWeight = 50F;
+            this.nohpDataGridViewTextBoxColumn.HeaderText = "Nomor Ponsel";
             this.nohpDataGridViewTextBoxColumn.Name = "nohpDataGridViewTextBoxColumn";
             // 
             // instansinamaDataGridViewTextBoxColumn
             // 
             this.instansinamaDataGridViewTextBoxColumn.DataPropertyName = "instansi_nama";
-            this.instansinamaDataGridViewTextBoxColumn.HeaderText = "instansi_nama";
+            this.instansinamaDataGridViewTextBoxColumn.FillWeight = 50F;
+            this.instansinamaDataGridViewTextBoxColumn.HeaderText = "Membimbing Instansi";
             this.instansinamaDataGridViewTextBoxColumn.Name = "instansinamaDataGridViewTextBoxColumn";
             // 
             // fotoguruDataGridViewImageColumn
             // 
+            this.fotoguruDataGridViewImageColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.fotoguruDataGridViewImageColumn.DataPropertyName = "foto_guru";
-            this.fotoguruDataGridViewImageColumn.HeaderText = "foto_guru";
+            this.fotoguruDataGridViewImageColumn.FillWeight = 120F;
+            this.fotoguruDataGridViewImageColumn.HeaderText = "Foto";
             this.fotoguruDataGridViewImageColumn.Name = "fotoguruDataGridViewImageColumn";
             // 
             // FormPebimbing
@@ -422,11 +430,11 @@ namespace ProjectQueenalya.AdminDashboardForm
             this.Text = "Pebimbing";
             this.Load += new System.EventHandler(this.FormPebimbing_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.guruBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pKLDataSet)).EndInit();
             this.panel.ResumeLayout(false);
             this.panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pKLDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.guruBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

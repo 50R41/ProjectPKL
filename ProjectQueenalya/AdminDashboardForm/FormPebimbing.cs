@@ -131,12 +131,12 @@ namespace ProjectQueenalya.AdminDashboardForm
                     // free the file once we get the dimensions
                     using (Image image = Image.FromFile(openFileDialog.FileName))
                     {
-                        validDimensions = (image.Width <= 350) && (image.Height <= 350);
+                        validDimensions = (image.Width <= 255) && (image.Height <= 330);
                     }
 
                     if (!validDimensions || !validFilesize)
                     {
-                        MessageBox.Show("Error ! Gambar terlalu besar . . . Dimensinya maksimal 350x350 !", "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Error ! Gambar terlalu besar . . . Dimensinya maksimal 255x330 !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                     else
                     {
@@ -205,7 +205,7 @@ namespace ProjectQueenalya.AdminDashboardForm
                                 int ia = dsd.Tables[0].Rows.Count;
                                 if (ia > 0)
                                 {
-                                    MessageBox.Show("Nama : " + txtNama.Text + " Sudah ada !", "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                    MessageBox.Show("Nama : " + txtNama.Text + " Sudah ada !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
                                 else
                                 {
@@ -222,7 +222,7 @@ namespace ProjectQueenalya.AdminDashboardForm
                                             s.foto_guru = ConvertFoto(this.pbImage.ImageLocation);
                                             saada.Gurus.Add(s);
                                             saada.SaveChanges();
-                                            if (MessageBox.Show("Berhasil Menginput Data !", "PERJAKA MEA", MessageBoxButtons.OK) == DialogResult.OK)
+                                            if (MessageBox.Show("Berhasil Menginput Data !", "PROPLACE MEA", MessageBoxButtons.OK) == DialogResult.OK)
                                             {
                                                 txtID.Text = "";
                                                 txtInstansi.Text = "";
@@ -239,14 +239,14 @@ namespace ProjectQueenalya.AdminDashboardForm
                                     }
                                     catch (Exception)
                                     {
-                                        MessageBox.Show("Periksa lagi data yang ingin disimpan !", "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                        MessageBox.Show("Periksa lagi data yang ingin disimpan !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                     }
                                 }
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Instansi : " + txtInstansi.Text + " Belum ada !", "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Instansi : " + txtInstansi.Text + " Belum ada !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -267,7 +267,7 @@ namespace ProjectQueenalya.AdminDashboardForm
         {
             if (txtNama.Text == "" || txtAlamat.Text == "" || txtID.Text == "")
             {
-                MessageBox.Show("Tolong masukan data yang ingin di edit ! atau bisa click datanya di bawah !", "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Tolong masukan data yang ingin di edit ! atau bisa click datanya di bawah !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else
@@ -284,68 +284,47 @@ namespace ProjectQueenalya.AdminDashboardForm
                         {
                             try
                             {
-                                using (SqlCommand Cmd = new SqlCommand("SELECT nama FROM Guru Where nama= '" + txtNama.Text + "'", cn))
+                                if (cn.State == ConnectionState.Closed)
                                 {
-                                    SqlDataAdapter da = new SqlDataAdapter(Cmd);
-                                    DataSet ds = new DataSet();
-                                    da.Fill(ds);
-                                    int Cda = ds.Tables[0].Rows.Count;
-                                    if (Cda > 0)
+                                    cn.Open();
+                                    using (DataTable dt = new DataTable("Guru"))
                                     {
-                                        MessageBox.Show("Nama : " + txtNama.Text + " Sudah ada !", "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                                    }
-                                    else
-                                    {
-                                        try
+                                        using (SqlCommand cmds = new SqlCommand("UPDATE Guru SET nip=@nip, nama=@Nama , alamat=@Alamat , no_hp=@no, instansi_nama=@instansi , foto_guru=@foto WHERE id=@ID", cn))
                                         {
-                                            if (cn.State == ConnectionState.Closed)
-                                            {
-                                                cn.Open();
-                                                using (DataTable dt = new DataTable("Guru"))
-                                                {
-                                                    using (SqlCommand cmds = new SqlCommand("UPDATE Guru SET nip=@nip, nama=@Nama , alamat=@Alamat , no_hp=@no, instansi_nama=instansi , foto_guru=@foto WHERE id=@ID", cn))
-                                                    {
 
-                                                        cmds.Parameters.AddWithValue("ID", txtID.Text);
-                                                        cmds.Parameters.AddWithValue("nip", txtNIP.Text);
-                                                        cmds.Parameters.AddWithValue("Nama", txtNama.Text);
-                                                        cmds.Parameters.AddWithValue("Alamat", txtAlamat.Text);
-                                                        cmds.Parameters.AddWithValue("no", txtNoHp.Text);
-                                                        cmds.Parameters.AddWithValue("instansi", txtInstansi.Text);
-                                                        cmds.Parameters.AddWithValue("foto", ConvertFoto(this.pbImage.ImageLocation));
-                                                        cmds.ExecuteNonQuery();
-                                                        if (MessageBox.Show("Berhasil Mengupdate data !", "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
-                                                        {
-                                                            txtID.Text = "";
-                                                            txtInstansi.Text = "";
-                                                            txtNoHp.Text = "";
-                                                            txtNama.Text = "";
-                                                            txtAlamat.Text = "";
-                                                            btnCancel.Visible = false;
-                                                            btnSimpan.Visible = false;
-                                                            btnEdit.Visible = false;
-                                                            btnEditShow.Visible = true;
-                                                            btnTambah.Visible = true;
-                                                        }
-                                                    }
-                                                }
+                                            cmds.Parameters.AddWithValue("ID", txtID.Text);
+                                            cmds.Parameters.AddWithValue("nip", txtNIP.Text);
+                                            cmds.Parameters.AddWithValue("Nama", txtNama.Text);
+                                            cmds.Parameters.AddWithValue("Alamat", txtAlamat.Text);
+                                            cmds.Parameters.AddWithValue("no", txtNoHp.Text);
+                                            cmds.Parameters.AddWithValue("instansi", txtInstansi.Text);
+                                            cmds.Parameters.AddWithValue("foto", ConvertFoto(this.pbImage.ImageLocation));
+                                            cmds.ExecuteNonQuery();
+                                            if (MessageBox.Show("Berhasil Mengupdate data !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+                                            {
+                                                txtID.Text = "";
+                                                txtInstansi.Text = "";
+                                                txtNoHp.Text = "";
+                                                txtNama.Text = "";
+                                                txtAlamat.Text = "";
+                                                btnCancel.Visible = false;
+                                                btnSimpan.Visible = false;
+                                                btnEdit.Visible = false;
+                                                btnEditShow.Visible = true;
+                                                btnTambah.Visible = true;
                                             }
-                                        }
-                                        catch (Exception ex)
-                                        {
-                                            MessageBox.Show(ex.Message, "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                         }
                                     }
                                 }
                             }
-                            catch (Exception ex)
+                            catch (Exception)
                             {
-                                MessageBox.Show(ex.Message, "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                MessageBox.Show("Masukan fotonya kembali untuk mengonfirmasi editnya !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
                         else
                         {
-                            MessageBox.Show("Instansi : " + txtInstansi.Text + " Belum ada !", "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            MessageBox.Show("Instansi : " + txtInstansi.Text + " Belum ada !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
                     }
                 }
@@ -371,7 +350,7 @@ namespace ProjectQueenalya.AdminDashboardForm
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -408,7 +387,7 @@ namespace ProjectQueenalya.AdminDashboardForm
             }
             catch (Exception ms)
             {
-                MessageBox.Show(ms.Message, "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ms.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -438,7 +417,7 @@ namespace ProjectQueenalya.AdminDashboardForm
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -462,7 +441,7 @@ namespace ProjectQueenalya.AdminDashboardForm
             }
             catch (Exception)
             {
-                MessageBox.Show("Pilih datanya dulu di DataGrid !", "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Pilih datanya dulu di DataGrid !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -472,18 +451,18 @@ namespace ProjectQueenalya.AdminDashboardForm
             {
                 if (e.KeyCode == Keys.Delete)
                 {
-                    if (MessageBox.Show("Apakah Kamu yakin ingin menghapusnya ?", "PERJAKA MEA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (MessageBox.Show("Apakah Kamu yakin ingin menghapusnya ?", "PROPLACE MEA", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         saada.Siswas.Remove(guruBindingSource.Current as Siswa);
                         guruBindingSource.RemoveCurrent();
                         saada.SaveChangesAsync();
-                        MessageBox.Show("Data berhasil di hapus !", "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Data berhasil di hapus !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message, "PERJAKA MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

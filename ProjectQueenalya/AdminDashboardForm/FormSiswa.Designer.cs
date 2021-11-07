@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnCari = new System.Windows.Forms.Button();
             this.panel = new System.Windows.Forms.Panel();
@@ -54,29 +53,18 @@
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnTambah = new System.Windows.Forms.Button();
             this.txtCari = new System.Windows.Forms.TextBox();
-            this.pKLDataSet = new ProjectQueenalya.PKLDataSet();
-            this.siswaBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.siswaTableAdapter = new ProjectQueenalya.PKLDataSetTableAdapters.SiswaTableAdapter();
-            this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nisDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.namaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.kelasDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.alamatDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.nohpDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.instansinamaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.fotosiswaDataGridViewImageColumn = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btnDetail = new System.Windows.Forms.Button();
+            this.btnHapus = new System.Windows.Forms.Button();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pKLDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.siswaBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // btnRefresh
             // 
             this.btnRefresh.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRefresh.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRefresh.Location = new System.Drawing.Point(521, 247);
+            this.btnRefresh.Location = new System.Drawing.Point(466, 247);
             this.btnRefresh.Name = "btnRefresh";
             this.btnRefresh.Size = new System.Drawing.Size(56, 24);
             this.btnRefresh.TabIndex = 25;
@@ -88,7 +76,7 @@
             // 
             this.btnCari.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCari.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCari.Location = new System.Drawing.Point(470, 247);
+            this.btnCari.Location = new System.Drawing.Point(415, 248);
             this.btnCari.Name = "btnCari";
             this.btnCari.Size = new System.Drawing.Size(45, 23);
             this.btnCari.TabIndex = 24;
@@ -305,20 +293,9 @@
             this.dataGridView1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.dataGridView1.AutoGenerateColumns = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView1.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.idDataGridViewTextBoxColumn,
-            this.nisDataGridViewTextBoxColumn,
-            this.namaDataGridViewTextBoxColumn,
-            this.kelasDataGridViewTextBoxColumn,
-            this.alamatDataGridViewTextBoxColumn,
-            this.nohpDataGridViewTextBoxColumn,
-            this.instansinamaDataGridViewTextBoxColumn,
-            this.fotosiswaDataGridViewImageColumn});
-            this.dataGridView1.DataSource = this.siswaBindingSource;
             this.dataGridView1.Location = new System.Drawing.Point(0, 277);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.Size = new System.Drawing.Size(587, 110);
@@ -393,7 +370,7 @@
             this.txtCari.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.txtCari.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtCari.ForeColor = System.Drawing.Color.Silver;
-            this.txtCari.Location = new System.Drawing.Point(293, 249);
+            this.txtCari.Location = new System.Drawing.Point(238, 250);
             this.txtCari.MaximumSize = new System.Drawing.Size(400, 20);
             this.txtCari.Name = "txtCari";
             this.txtCari.Size = new System.Drawing.Size(171, 20);
@@ -402,74 +379,37 @@
             this.txtCari.Enter += new System.EventHandler(this.txtCari_Enter);
             this.txtCari.Leave += new System.EventHandler(this.txtCari_Leave);
             // 
-            // pKLDataSet
+            // btnDetail
             // 
-            this.pKLDataSet.DataSetName = "PKLDataSet";
-            this.pKLDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            this.btnDetail.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDetail.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDetail.Location = new System.Drawing.Point(528, 247);
+            this.btnDetail.Name = "btnDetail";
+            this.btnDetail.Size = new System.Drawing.Size(56, 24);
+            this.btnDetail.TabIndex = 57;
+            this.btnDetail.Text = "Detail";
+            this.btnDetail.UseVisualStyleBackColor = true;
+            this.btnDetail.Click += new System.EventHandler(this.btnDetail_Click);
             // 
-            // siswaBindingSource
+            // btnHapus
             // 
-            this.siswaBindingSource.DataMember = "Siswa";
-            this.siswaBindingSource.DataSource = this.pKLDataSet;
-            // 
-            // siswaTableAdapter
-            // 
-            this.siswaTableAdapter.ClearBeforeFill = true;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
-            this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            this.idDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // nisDataGridViewTextBoxColumn
-            // 
-            this.nisDataGridViewTextBoxColumn.DataPropertyName = "nis";
-            this.nisDataGridViewTextBoxColumn.HeaderText = "nis";
-            this.nisDataGridViewTextBoxColumn.Name = "nisDataGridViewTextBoxColumn";
-            // 
-            // namaDataGridViewTextBoxColumn
-            // 
-            this.namaDataGridViewTextBoxColumn.DataPropertyName = "nama";
-            this.namaDataGridViewTextBoxColumn.HeaderText = "nama";
-            this.namaDataGridViewTextBoxColumn.Name = "namaDataGridViewTextBoxColumn";
-            // 
-            // kelasDataGridViewTextBoxColumn
-            // 
-            this.kelasDataGridViewTextBoxColumn.DataPropertyName = "kelas";
-            this.kelasDataGridViewTextBoxColumn.HeaderText = "kelas";
-            this.kelasDataGridViewTextBoxColumn.Name = "kelasDataGridViewTextBoxColumn";
-            // 
-            // alamatDataGridViewTextBoxColumn
-            // 
-            this.alamatDataGridViewTextBoxColumn.DataPropertyName = "alamat";
-            this.alamatDataGridViewTextBoxColumn.HeaderText = "alamat";
-            this.alamatDataGridViewTextBoxColumn.Name = "alamatDataGridViewTextBoxColumn";
-            // 
-            // nohpDataGridViewTextBoxColumn
-            // 
-            this.nohpDataGridViewTextBoxColumn.DataPropertyName = "no_hp";
-            this.nohpDataGridViewTextBoxColumn.HeaderText = "no_hp";
-            this.nohpDataGridViewTextBoxColumn.Name = "nohpDataGridViewTextBoxColumn";
-            // 
-            // instansinamaDataGridViewTextBoxColumn
-            // 
-            this.instansinamaDataGridViewTextBoxColumn.DataPropertyName = "instansi_nama";
-            this.instansinamaDataGridViewTextBoxColumn.HeaderText = "instansi_nama";
-            this.instansinamaDataGridViewTextBoxColumn.Name = "instansinamaDataGridViewTextBoxColumn";
-            // 
-            // fotosiswaDataGridViewImageColumn
-            // 
-            this.fotosiswaDataGridViewImageColumn.DataPropertyName = "foto_siswa";
-            this.fotosiswaDataGridViewImageColumn.HeaderText = "foto_siswa";
-            this.fotosiswaDataGridViewImageColumn.Name = "fotosiswaDataGridViewImageColumn";
+            this.btnHapus.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnHapus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnHapus.Location = new System.Drawing.Point(515, 51);
+            this.btnHapus.Name = "btnHapus";
+            this.btnHapus.Size = new System.Drawing.Size(50, 30);
+            this.btnHapus.TabIndex = 58;
+            this.btnHapus.Text = "Hapus";
+            this.btnHapus.UseVisualStyleBackColor = true;
+            this.btnHapus.Click += new System.EventHandler(this.btnHapus_Click);
             // 
             // FormSiswa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(587, 387);
+            this.Controls.Add(this.btnHapus);
+            this.Controls.Add(this.btnDetail);
             this.Controls.Add(this.btnCancel);
             this.Controls.Add(this.btnSimpan);
             this.Controls.Add(this.btnEdit);
@@ -487,8 +427,6 @@
             this.panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pKLDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.siswaBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -521,16 +459,7 @@
         private System.Windows.Forms.Button btnFile;
         private System.Windows.Forms.PictureBox pbImage;
         private System.Windows.Forms.TextBox txtCari;
-        private PKLDataSet pKLDataSet;
-        private System.Windows.Forms.BindingSource siswaBindingSource;
-        private PKLDataSetTableAdapters.SiswaTableAdapter siswaTableAdapter;
-        private System.Windows.Forms.DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nisDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn namaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn kelasDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn alamatDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn nohpDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn instansinamaDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewImageColumn fotosiswaDataGridViewImageColumn;
+        private System.Windows.Forms.Button btnDetail;
+        private System.Windows.Forms.Button btnHapus;
     }
 }
