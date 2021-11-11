@@ -32,6 +32,7 @@ namespace ProjectQueenalya
 
         private void btnLOGIN_Click(object sender, EventArgs e)
         {
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["PklConSTR"].ConnectionString);
             try
             {
                 if ( txtUSER.Text == "" || txtPASS.Text == "")
@@ -69,6 +70,11 @@ namespace ProjectQueenalya
                             SiswaDashboard sd = new SiswaDashboard();
                             sd.Show();
                             this.Hide();
+                        }
+                        using (SqlCommand cmd = new SqlCommand("UPDATE Login SET status='TRUE' WHERE nama='"+ dt.Rows[0]["nama"].ToString() +"'", connection))
+                        {
+                            connection.Open();
+                            cmd.ExecuteNonQuery();
                         }
                     }
                     else

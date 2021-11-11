@@ -41,14 +41,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtID = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.instansiBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pKLDataSet = new ProjectQueenalya.PKLDataSet();
             this.btnEditShow = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnSimpan = new System.Windows.Forms.Button();
             this.btnEdit = new System.Windows.Forms.Button();
             this.btnTambah = new System.Windows.Forms.Button();
             this.txtCari = new System.Windows.Forms.TextBox();
-            this.pKLDataSet = new ProjectQueenalya.PKLDataSet();
-            this.instansiBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.instansiTableAdapter = new ProjectQueenalya.PKLDataSetTableAdapters.InstansiTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.namaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -57,8 +57,8 @@
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pKLDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.instansiBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pKLDataSet)).BeginInit();
             this.SuspendLayout();
             // 
             // btnRefresh
@@ -207,6 +207,16 @@
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
             // 
+            // instansiBindingSource
+            // 
+            this.instansiBindingSource.DataMember = "Instansi";
+            this.instansiBindingSource.DataSource = this.pKLDataSet;
+            // 
+            // pKLDataSet
+            // 
+            this.pKLDataSet.DataSetName = "PKLDataSet";
+            this.pKLDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
             // btnEditShow
             // 
             this.btnEditShow.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -283,16 +293,6 @@
             this.txtCari.Enter += new System.EventHandler(this.txtCari_Enter);
             this.txtCari.Leave += new System.EventHandler(this.txtCari_Leave);
             // 
-            // pKLDataSet
-            // 
-            this.pKLDataSet.DataSetName = "PKLDataSet";
-            this.pKLDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // instansiBindingSource
-            // 
-            this.instansiBindingSource.DataMember = "Instansi";
-            this.instansiBindingSource.DataSource = this.pKLDataSet;
-            // 
             // instansiTableAdapter
             // 
             this.instansiTableAdapter.ClearBeforeFill = true;
@@ -300,26 +300,26 @@
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
-            this.idDataGridViewTextBoxColumn.HeaderText = "id";
+            this.idDataGridViewTextBoxColumn.HeaderText = "ID";
             this.idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
             this.idDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // namaDataGridViewTextBoxColumn
             // 
             this.namaDataGridViewTextBoxColumn.DataPropertyName = "nama";
-            this.namaDataGridViewTextBoxColumn.HeaderText = "nama";
+            this.namaDataGridViewTextBoxColumn.HeaderText = "Nama";
             this.namaDataGridViewTextBoxColumn.Name = "namaDataGridViewTextBoxColumn";
             // 
             // alamatDataGridViewTextBoxColumn
             // 
             this.alamatDataGridViewTextBoxColumn.DataPropertyName = "alamat";
-            this.alamatDataGridViewTextBoxColumn.HeaderText = "alamat";
+            this.alamatDataGridViewTextBoxColumn.HeaderText = "Alamat";
             this.alamatDataGridViewTextBoxColumn.Name = "alamatDataGridViewTextBoxColumn";
             // 
             // fotoinstansiDataGridViewImageColumn
             // 
             this.fotoinstansiDataGridViewImageColumn.DataPropertyName = "foto_instansi";
-            this.fotoinstansiDataGridViewImageColumn.HeaderText = "foto_instansi";
+            this.fotoinstansiDataGridViewImageColumn.HeaderText = "Foto";
             this.fotoinstansiDataGridViewImageColumn.Name = "fotoinstansiDataGridViewImageColumn";
             // 
             // FormInstansi
@@ -344,8 +344,8 @@
             this.panel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbImage)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pKLDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.instansiBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pKLDataSet)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

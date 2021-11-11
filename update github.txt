@@ -1,5 +1,0 @@
-git commit -m "Version Alpha 0.1"
-git branch -M main
-git add .
-git push -u  origin main
-git remote add origin https://github.com/50R41/ProjectQueenalya.git

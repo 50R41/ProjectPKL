@@ -319,29 +319,36 @@ namespace ProjectQueenalya.AdminDashboardForm
 
         private void btnCari_Click(object sender, EventArgs e)
         {
-            try
+            if (txtCari.Text == "Cari . . .")
             {
-                using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["PklConSTR"].ConnectionString))
+                MessageBox.Show("Masukan nama yang ingin di cari !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                try
                 {
-                    if (cn.State == ConnectionState.Closed)
+                    using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["PklConSTR"].ConnectionString))
                     {
-                        cn.Open();
-                        using (DataTable dt = new DataTable("Login"))
+                        if (cn.State == ConnectionState.Closed)
                         {
-                            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Login Where nama=@nama", cn))
+                            cn.Open();
+                            using (DataTable dt = new DataTable("Login"))
                             {
-                                cmd.Parameters.AddWithValue("nama", txtCari.Text);
-                                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                                adapter.Fill(dt);
-                                dataGridView1.DataSource = dt;
+                                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Login Where nama=@nama", cn))
+                                {
+                                    cmd.Parameters.AddWithValue("nama", txtCari.Text);
+                                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                                    adapter.Fill(dt);
+                                    dataGridView1.DataSource = dt;
+                                }
                             }
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

@@ -32,7 +32,7 @@ namespace ProjectQueenalya.AdminDashboardForm
             this.components = new System.ComponentModel.Container();
             this.txtCari = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtID = new System.Windows.Forms.TextBox();
+            this.txtNama = new System.Windows.Forms.TextBox();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnRefresh = new System.Windows.Forms.Button();
             this.btnCari = new System.Windows.Forms.Button();
@@ -75,19 +75,19 @@ namespace ProjectQueenalya.AdminDashboardForm
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(14, 20);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(48, 13);
+            this.label1.Size = new System.Drawing.Size(50, 13);
             this.label1.TabIndex = 2;
-            this.label1.Text = "ID         :";
+            this.label1.Text = "Nama    :";
             // 
-            // txtID
+            // txtNama
             // 
-            this.txtID.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.txtNama.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtID.Location = new System.Drawing.Point(71, 16);
-            this.txtID.MaximumSize = new System.Drawing.Size(600, 42);
-            this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(222, 20);
-            this.txtID.TabIndex = 1;
+            this.txtNama.Location = new System.Drawing.Point(71, 16);
+            this.txtNama.MaximumSize = new System.Drawing.Size(600, 42);
+            this.txtNama.Name = "txtNama";
+            this.txtNama.Size = new System.Drawing.Size(222, 20);
+            this.txtNama.TabIndex = 1;
             // 
             // btnCancel
             // 
@@ -197,11 +197,11 @@ namespace ProjectQueenalya.AdminDashboardForm
             // panel
             // 
             this.panel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel.Controls.Add(this.txtNama);
             this.panel.Controls.Add(this.dateTimePicker1);
             this.panel.Controls.Add(this.label2);
             this.panel.Controls.Add(this.btnHapusTanggal);
             this.panel.Controls.Add(this.btnHapusAll);
-            this.panel.Controls.Add(this.txtID);
             this.panel.Controls.Add(this.label1);
             this.panel.Location = new System.Drawing.Point(288, 0);
             this.panel.Name = "panel";
@@ -284,7 +284,7 @@ namespace ProjectQueenalya.AdminDashboardForm
 
         private System.Windows.Forms.TextBox txtCari;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtID;
+        private System.Windows.Forms.TextBox txtNama;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnRefresh;
         private System.Windows.Forms.Button btnCari;

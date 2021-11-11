@@ -69,9 +69,9 @@ namespace ProjectQueenalya.AdminDashboardForm
                     {
                         MyCollection.Add(reader["nama_siswa"].ToString());
                     }
-                    txtID.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
-                    txtID.AutoCompleteSource = AutoCompleteSource.CustomSource;
-                    txtID.AutoCompleteCustomSource = MyCollection;
+                    txtNama.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
+                    txtNama.AutoCompleteSource = AutoCompleteSource.CustomSource;
+                    txtNama.AutoCompleteCustomSource = MyCollection;
                     txtCari.AutoCompleteMode = AutoCompleteMode.SuggestAppend;
                     txtCari.AutoCompleteSource = AutoCompleteSource.CustomSource;
                     txtCari.AutoCompleteCustomSource = MyCollection;
@@ -114,29 +114,36 @@ namespace ProjectQueenalya.AdminDashboardForm
 
         private void btnCari_Click(object sender, EventArgs e)
         {
-            try
+            if (txtCari.Text == "Cari . . .")
             {
-                using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["PklConSTR"].ConnectionString))
+                MessageBox.Show("Masukan nama yang ingin di cari !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                try
                 {
-                    if (cn.State == ConnectionState.Closed)
+                    using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["PklConSTR"].ConnectionString))
                     {
-                        cn.Open();
-                        using (DataTable dt = new DataTable("Absen"))
+                        if (cn.State == ConnectionState.Closed)
                         {
-                            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Absen Where siswa_id=@siswa_id", cn))
+                            cn.Open();
+                            using (DataTable dt = new DataTable("Absen"))
                             {
-                                cmd.Parameters.AddWithValue("siswa_id", txtCari.Text);
-                                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                                adapter.Fill(dt);
-                                dataGridView1.DataSource = dt;
+                                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Absen Where siswa_id=@siswa_id", cn))
+                                {
+                                    cmd.Parameters.AddWithValue("siswa_id", txtCari.Text);
+                                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                                    adapter.Fill(dt);
+                                    dataGridView1.DataSource = dt;
+                                }
                             }
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -176,9 +183,9 @@ namespace ProjectQueenalya.AdminDashboardForm
 
         private void btnHapusAll_Click(object sender, EventArgs e)
         {
-            if (txtID.Text == "")
+            if (txtNama.Text == "")
             {
-                MessageBox.Show("Tolong masukan id siswa yang ingin di hapus !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Tolong masukan nama siswa yang ingin di hapus !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else
@@ -192,18 +199,21 @@ namespace ProjectQueenalya.AdminDashboardForm
                             cn.Open();
                             using (DataTable dt = new DataTable("Absen"))
                             {
-                                using (SqlCommand cmds = new SqlCommand("DELETE Absen WHERE siswa_id=@ID", cn))
+                                if (MessageBox.Show("Apakah ingin mereset absena siswa tersebut ?", "PROPLACE MEA", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                                 {
-
-                                    cmds.Parameters.AddWithValue("ID", txtID.Text);
-                                    cmds.ExecuteNonQuery();
-                                    if (MessageBox.Show("Berhasil Menghapus data !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+                                    using (SqlCommand cmds = new SqlCommand("DELETE Absen WHERE nama_siswa=@ID", cn))
                                     {
-                                        txtID.Text = "";
-                                        btnCancel.Visible = false;
-                                        btnEditShow.Visible = true;
-                                        panel.Enabled = false;
-                                        btnRefresh.PerformClick();
+
+                                        cmds.Parameters.AddWithValue("ID", txtNama.Text);
+                                        cmds.ExecuteNonQuery();
+                                        if (MessageBox.Show("Berhasil Menghapus data !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
+                                        {
+                                            txtNama.Text = "";
+                                            btnCancel.Visible = false;
+                                            btnEditShow.Visible = true;
+                                            panel.Enabled = false;
+                                            btnRefresh.PerformClick();
+                                        }
                                     }
                                 }
                             }
@@ -219,9 +229,9 @@ namespace ProjectQueenalya.AdminDashboardForm
 
         private void btnHapusTanggal_Click(object sender, EventArgs e)
         {
-            if (txtID.Text == "")
+            if (txtNama.Text == "")
             {
-                MessageBox.Show("Tolong masukan id siswa yang ingin di hapus !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Tolong masukan nama siswa yang ingin di hapus !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             else
@@ -237,15 +247,15 @@ namespace ProjectQueenalya.AdminDashboardForm
                             {
                                 if (MessageBox.Show("Apakah tanggalnya sudah benar ?", "PROPLACE MEA", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                                 {
-                                    using (SqlCommand cmds = new SqlCommand("DELETE Absen WHERE siswa_id=@ID AND tanggal=@tgl", cn))
+                                    using (SqlCommand cmds = new SqlCommand("DELETE Absen WHERE nama_siswa=@ID AND tanggal=@tgl", cn))
                                     {
 
-                                        cmds.Parameters.AddWithValue("ID", txtID.Text);
+                                        cmds.Parameters.AddWithValue("ID", txtNama.Text);
                                         cmds.Parameters.AddWithValue("tgl" , dateTimePicker1.Value.Date);
                                         cmds.ExecuteNonQuery();
                                         if (MessageBox.Show("Berhasil Menghapus data !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Information) == DialogResult.OK)
                                         {
-                                            txtID.Text = "";
+                                            txtNama.Text = "";
                                             btnCancel.Visible = false;
                                             btnEditShow.Visible = true;
                                             panel.Enabled = false;

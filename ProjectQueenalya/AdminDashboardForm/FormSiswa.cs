@@ -171,6 +171,7 @@ namespace ProjectQueenalya.AdminDashboardForm
                 btnSimpan.Visible = true;
                 btnCancel.Visible = true;
                 panel.Enabled = true;
+                pbImage.Image = null;
                 btnEditShow.Visible = false;
                 txtNIS.Focus();
             }
@@ -223,39 +224,53 @@ namespace ProjectQueenalya.AdminDashboardForm
                                     }
                                     else
                                     {
-                                        try
+                                        using (SqlCommand cmd = new SqlCommand("SELECT nama_instansi FROM Guru Where='"+ txtInstansi.Text +"'", cn))
                                         {
-                                            if (MessageBox.Show("Apakah kamu yakin dan sudah di pastikan semua datanya benar ?", "Tabungan Siwa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                            SqlDataAdapter dsda = new SqlDataAdapter(Cmd);
+                                            DataSet dssa = new DataSet();
+                                            da.Fill(dssa);
+                                            int iasd = dssa.Tables[0].Rows.Count;
+                                            if (iasd > 0)
                                             {
-                                                Siswa s = new Siswa();
-                                                s.nis = Convert.ToInt64(txtNIS.Text);
-                                                s.nama = txtNama.Text;
-                                                s.kelas = comboBoxKelas.Text;
-                                                s.alamat = txtAlamat.Text;
-                                                s.instansi_nama = txtInstansi.Text;
-                                                s.no_hp = Convert.ToInt64(txtNoHP.Text);
-                                                s.foto_siswa = ConvertFoto(this.pbImage.ImageLocation);
-                                                tes.Siswas.Add(s);
-                                                tes.SaveChanges();
-                                                panel.Enabled = false;
-                                                if (MessageBox.Show("Berhasil Menginput Data !", "PROPLACE MEA", MessageBoxButtons.OK) == DialogResult.OK)
+                                                try
                                                 {
-                                                    txtNIS.Text = "";
-                                                    txtNama.Text = "";
-                                                    txtAlamat.Text = "";
-                                                    txtNoHP.Text = "";
-                                                    txtInstansi.Text = "";
-                                                    btnCancel.Visible = false;
-                                                    btnSimpan.Visible = false;
-                                                    btnEdit.Visible = false;
-                                                    btnEditShow.Visible = true;
-                                                    btnTambah.Visible = true;
+                                                    if (MessageBox.Show("Apakah kamu yakin dan sudah di pastikan semua datanya benar ?", "Tabungan Siwa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                                                    {
+                                                        Siswa s = new Siswa();
+                                                        s.nis = Convert.ToInt64(txtNIS.Text);
+                                                        s.nama = txtNama.Text;
+                                                        s.kelas = comboBoxKelas.Text;
+                                                        s.alamat = txtAlamat.Text;
+                                                        s.instansi_nama = txtInstansi.Text;
+                                                        s.no_hp = Convert.ToInt64(txtNoHP.Text);
+                                                        s.foto_siswa = ConvertFoto(this.pbImage.ImageLocation);
+                                                        tes.Siswas.Add(s);
+                                                        tes.SaveChanges();
+                                                        if (MessageBox.Show("Berhasil Menginput Data !", "PROPLACE MEA", MessageBoxButtons.OK) == DialogResult.OK)
+                                                        {
+                                                            txtNIS.Text = "";
+                                                            txtNama.Text = "";
+                                                            txtAlamat.Text = "";
+                                                            txtNoHP.Text = "";
+                                                            txtInstansi.Text = "";
+                                                            btnCancel.Visible = false;
+                                                            btnSimpan.Visible = false;
+                                                            btnEdit.Visible = false;
+                                                            pbImage.Image = null;
+                                                            btnEditShow.Visible = true;
+                                                            btnTambah.Visible = true;
+                                                        }
+                                                    }
+                                                }
+                                                catch (Exception)
+                                                {
+                                                    MessageBox.Show("Lihat lagi datanya, apakah ada yang belum ke input atau enggak !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                                 }
                                             }
-                                        }
-                                        catch (Exception)
-                                        {
-                                            MessageBox.Show("Lihat lagi datanya, apakah ada yang belum ke input atau enggak !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            else
+                                            {
+                                                MessageBox.Show("Guru belum mebimbing di instansi : " + txtInstansi.Text + " !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                                            }
                                         }
                                     }
                                 }
@@ -315,6 +330,7 @@ namespace ProjectQueenalya.AdminDashboardForm
                                         btnEditShow.Visible = true;
                                         btnTambah.Visible = true;
                                         panel.Enabled = false;
+                                        pbImage.Image = null;
                                     }
                                 }
                             
@@ -385,30 +401,37 @@ namespace ProjectQueenalya.AdminDashboardForm
 
         private void btnCari_Click(object sender, EventArgs e)
         {
-            try
+            if (txtCari.Text == "Cari . . .")
             {
-                using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["PklConSTR"].ConnectionString))
+                MessageBox.Show("Masukan nama yang ingin di cari !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                try
                 {
-                    if (cn.State == ConnectionState.Closed)
+                    using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["PklConSTR"].ConnectionString))
                     {
-                        cn.Open();
-                        using (DataTable dt = new DataTable("Siswa"))
+                        if (cn.State == ConnectionState.Closed)
                         {
-                            using (SqlCommand cmd = new SqlCommand("SELECT Siswa.id, Siswa.nis, Siswa.nama, Siswa.kelas, Siswa.alamat, Siswa.no_hp , Siswa.instansi_nama , Guru.nama , CAST(foto_siswa AS varbinary(MAX)) FROM Siswa JOIN Guru on Siswa.instansi_nama = Guru.instansi_nama WHERE Siswa.instansi_nama=@instansi OR Siswa.nama=@nama GROUP BY Siswa.id, Siswa.nis, Siswa.nama, Siswa.kelas, Siswa.alamat, Siswa.no_hp , Siswa.instansi_nama , Guru.nama , CAST(foto_siswa AS varbinary(MAX)) ORDER BY Siswa.id", cn))
+                            cn.Open();
+                            using (DataTable dt = new DataTable("Siswa"))
                             {
-                                cmd.Parameters.AddWithValue("nama", txtCari.Text);
-                                cmd.Parameters.AddWithValue("instansi", txtCari.Text);
-                                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                                adapter.Fill(dt);
-                                dataGridView1.DataSource = dt;
+                                using (SqlCommand cmd = new SqlCommand("SELECT Siswa.id, Siswa.nis, Siswa.nama, Siswa.kelas, Siswa.alamat, Siswa.no_hp , Siswa.instansi_nama , Guru.nama , CAST(foto_siswa AS varbinary(MAX)) FROM Siswa JOIN Guru on Siswa.instansi_nama = Guru.instansi_nama WHERE Siswa.instansi_nama=@instansi OR Siswa.nama=@nama GROUP BY Siswa.id, Siswa.nis, Siswa.nama, Siswa.kelas, Siswa.alamat, Siswa.no_hp , Siswa.instansi_nama , Guru.nama , CAST(foto_siswa AS varbinary(MAX)) ORDER BY Siswa.id", cn))
+                                {
+                                    cmd.Parameters.AddWithValue("nama", txtCari.Text);
+                                    cmd.Parameters.AddWithValue("instansi", txtCari.Text);
+                                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                                    adapter.Fill(dt);
+                                    dataGridView1.DataSource = dt;
+                                }
                             }
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -440,7 +463,7 @@ namespace ProjectQueenalya.AdminDashboardForm
         private void btnFile_Click(object sender, EventArgs e)
         {
             OpenFileDialog openFileDialog = new OpenFileDialog();
-            openFileDialog.Filter = "Image File(*.jpe; *.jpeg; *.bmp; *.png; *.jpg) | *.jpe;*.jpeg;*.bmp;*.png;*.jpg";
+            openFileDialog.Filter = "Image File(*.jpe; *.jpeg; *.bmp; *.png; *.jpg; *.PNG) | *.jpe;*.jpeg;*.bmp;*.png;*.jpg;*.PNG";
             openFileDialog.Multiselect = false;
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
@@ -545,14 +568,25 @@ namespace ProjectQueenalya.AdminDashboardForm
                                 cmd.ExecuteNonQuery();
                                 MessageBox.Show("Berhasil menghapus data !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                 btnRefresh.PerformClick();
+                                txtNIS.Text = "";
+                                txtNama.Text = "";
+                                txtAlamat.Text = "";
+                                txtNoHP.Text = "";
+                                txtInstansi.Text = "";
+                                btnCancel.Visible = false;
+                                btnSimpan.Visible = false;
+                                btnEdit.Visible = false;
+                                pbImage.Image = null;
+                                btnEditShow.Visible = true;
+                                btnTambah.Visible = true;
                             }
                         }
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                MessageBox.Show(ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Cek dulu data yang ingin di hapusnya !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

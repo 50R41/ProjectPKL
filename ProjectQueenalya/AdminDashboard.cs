@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Configuration;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
@@ -229,6 +231,12 @@ namespace ProjectQueenalya
 
         private void btnLogout_Click(object sender, EventArgs e)
         {
+            SqlConnection connection = new SqlConnection(ConfigurationManager.ConnectionStrings["PklConSTR"].ConnectionString);
+            using (SqlCommand cmd = new SqlCommand("UPDATE Login SET status='False' WHERE nama='" + LoginStatus.nama + "' AND role='admin'", connection))
+            {
+                connection.Open();
+                cmd.ExecuteNonQuery();
+            }
             this.Close();
             AdminLogin ss = new AdminLogin();
             ss.Show();

@@ -229,11 +229,14 @@ namespace ProjectQueenalya.AdminDashboardForm
                                                 txtNoHp.Text = "";
                                                 txtNama.Text = "";
                                                 txtAlamat.Text = "";
+                                                txtNIP.Text = "";
+                                                pbImage.ImageLocation = null;
                                                 btnCancel.Visible = false;
                                                 btnSimpan.Visible = false;
                                                 btnEdit.Visible = false;
                                                 btnEditShow.Visible = true;
                                                 btnTambah.Visible = true;
+                                                btnRefresh.PerformClick();
                                             }
                                         }
                                     }
@@ -307,11 +310,14 @@ namespace ProjectQueenalya.AdminDashboardForm
                                                 txtNoHp.Text = "";
                                                 txtNama.Text = "";
                                                 txtAlamat.Text = "";
+                                                txtNIP.Text = "";
+                                                pbImage.Image = null;
                                                 btnCancel.Visible = false;
                                                 btnSimpan.Visible = false;
                                                 btnEdit.Visible = false;
                                                 btnEditShow.Visible = true;
                                                 btnTambah.Visible = true;
+                                                btnRefresh.PerformClick();
                                             }
                                         }
                                     }
@@ -345,6 +351,7 @@ namespace ProjectQueenalya.AdminDashboardForm
                 btnSimpan.Visible = true;
                 btnCancel.Visible = true;
                 panel.Enabled = true;
+                pbImage.Image = null;
                 btnEditShow.Visible = false;
                 txtNIP.Focus();
             }
@@ -394,30 +401,36 @@ namespace ProjectQueenalya.AdminDashboardForm
 
         private void btnCari_Click(object sender, EventArgs e)
         {
-            try
+            if (txtCari.Text == "Cari . . .")
             {
-                using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["PklConSTR"].ConnectionString))
+                MessageBox.Show("Masukan nama yang ingin di cari !" , "PROPLACE MEA" , MessageBoxButtons.OK , MessageBoxIcon.Information);
+            }
+            else
+            {
+                try
                 {
-                    if (cn.State == ConnectionState.Closed)
+                    using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["PklConSTR"].ConnectionString))
                     {
-                        cn.Open();
-                        using (DataTable dt = new DataTable("Guru"))
+                        if (cn.State == ConnectionState.Closed)
                         {
-                            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Guru Where nama=@nama OR id=@id", cn))
+                            cn.Open();
+                            using (DataTable dt = new DataTable("Guru"))
                             {
-                                cmd.Parameters.AddWithValue("id" , txtCari.Text);
-                                cmd.Parameters.AddWithValue("nama", txtCari.Text);
-                                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                                adapter.Fill(dt);
-                                dataGridView1.DataSource = dt;
+                                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Guru Where nama=@nama", cn))
+                                {
+                                    cmd.Parameters.AddWithValue("nama", txtCari.Text);
+                                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                                    adapter.Fill(dt);
+                                    dataGridView1.DataSource = dt;
+                                }
                             }
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

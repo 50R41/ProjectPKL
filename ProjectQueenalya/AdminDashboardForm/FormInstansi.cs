@@ -144,6 +144,7 @@ namespace ProjectQueenalya.AdminDashboardForm
                 panel.Enabled = true;
                 btnEditShow.Visible = false;
                 label1.Visible = false;
+                pbImage.Image = null;
                 txtNama.Focus();
             }
             catch (Exception)
@@ -196,11 +197,13 @@ namespace ProjectQueenalya.AdminDashboardForm
                                         txtID.Text = "";
                                         txtNama.Text = "";
                                         txtAlamat.Text = "";
+                                        pbImage.Image = null;
                                         btnCancel.Visible = false;
                                         btnSimpan.Visible = false;
                                         btnEdit.Visible = false;
                                         btnEditShow.Visible = true;
                                         btnTambah.Visible = true;
+                                        btnRefresh.PerformClick();
                                     }
                                 }
                             }
@@ -249,8 +252,10 @@ namespace ProjectQueenalya.AdminDashboardForm
                                         btnSimpan.Visible = false;
                                         btnEdit.Visible = false;
                                         btnEditShow.Visible = true;
+                                        pbImage.Image = null;
                                         btnTambah.Visible = true;
                                         panel.Enabled = false;
+                                        btnRefresh.PerformClick();
                                     }
                                 }
                             }
@@ -336,29 +341,36 @@ namespace ProjectQueenalya.AdminDashboardForm
 
         private void btnCari_Click(object sender, EventArgs e)
         {
-            try
+            if (txtCari.Text == "Cari . . .")
             {
-                using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["PklConSTR"].ConnectionString))
+                MessageBox.Show("Masukan nama yang ingin di cari !", "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                try
                 {
-                    if (cn.State == ConnectionState.Closed)
+                    using (SqlConnection cn = new SqlConnection(ConfigurationManager.ConnectionStrings["PklConSTR"].ConnectionString))
                     {
-                        cn.Open();
-                        using (DataTable dt = new DataTable("Instansi"))
+                        if (cn.State == ConnectionState.Closed)
                         {
-                            using (SqlCommand cmd = new SqlCommand("SELECT * FROM Instansi Where nama=@nama", cn))
+                            cn.Open();
+                            using (DataTable dt = new DataTable("Instansi"))
                             {
-                                cmd.Parameters.AddWithValue("nama", txtCari.Text);
-                                SqlDataAdapter adapter = new SqlDataAdapter(cmd);
-                                adapter.Fill(dt);
-                                dataGridView1.DataSource = dt;
+                                using (SqlCommand cmd = new SqlCommand("SELECT * FROM Instansi Where nama=@nama", cn))
+                                {
+                                    cmd.Parameters.AddWithValue("nama", txtCari.Text);
+                                    SqlDataAdapter adapter = new SqlDataAdapter(cmd);
+                                    adapter.Fill(dt);
+                                    dataGridView1.DataSource = dt;
+                                }
                             }
                         }
                     }
                 }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "PROPLACE MEA", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 

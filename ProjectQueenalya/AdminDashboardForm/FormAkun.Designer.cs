@@ -50,16 +50,16 @@ namespace ProjectQueenalya.AdminDashboardForm
             this.label1 = new System.Windows.Forms.Label();
             this.txtUser = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.loginBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.pKLDataSet = new ProjectQueenalya.PKLDataSet();
+            this.txtCari = new System.Windows.Forms.TextBox();
+            this.loginTableAdapter = new ProjectQueenalya.PKLDataSetTableAdapters.LoginTableAdapter();
             this.idDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.namaDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.usernameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.passwordDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.roleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.statusDataGridViewCheckBoxColumn = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.loginBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.pKLDataSet = new ProjectQueenalya.PKLDataSet();
-            this.txtCari = new System.Windows.Forms.TextBox();
-            this.loginTableAdapter = new ProjectQueenalya.PKLDataSetTableAdapters.LoginTableAdapter();
             this.panel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.loginBindingSource)).BeginInit();
@@ -306,6 +306,34 @@ namespace ProjectQueenalya.AdminDashboardForm
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
             // 
+            // loginBindingSource
+            // 
+            this.loginBindingSource.DataMember = "Login";
+            this.loginBindingSource.DataSource = this.pKLDataSet;
+            // 
+            // pKLDataSet
+            // 
+            this.pKLDataSet.DataSetName = "PKLDataSet";
+            this.pKLDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // txtCari
+            // 
+            this.txtCari.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtCari.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtCari.ForeColor = System.Drawing.Color.Silver;
+            this.txtCari.Location = new System.Drawing.Point(293, 170);
+            this.txtCari.MaximumSize = new System.Drawing.Size(400, 20);
+            this.txtCari.Name = "txtCari";
+            this.txtCari.Size = new System.Drawing.Size(171, 20);
+            this.txtCari.TabIndex = 63;
+            this.txtCari.Text = "Cari . . .";
+            this.txtCari.Enter += new System.EventHandler(this.txtCari_Enter);
+            this.txtCari.Leave += new System.EventHandler(this.txtCari_Leave);
+            // 
+            // loginTableAdapter
+            // 
+            this.loginTableAdapter.ClearBeforeFill = true;
+            // 
             // idDataGridViewTextBoxColumn
             // 
             this.idDataGridViewTextBoxColumn.DataPropertyName = "id";
@@ -340,36 +368,8 @@ namespace ProjectQueenalya.AdminDashboardForm
             // statusDataGridViewCheckBoxColumn
             // 
             this.statusDataGridViewCheckBoxColumn.DataPropertyName = "status";
-            this.statusDataGridViewCheckBoxColumn.HeaderText = "Status";
+            this.statusDataGridViewCheckBoxColumn.HeaderText = "Status Login";
             this.statusDataGridViewCheckBoxColumn.Name = "statusDataGridViewCheckBoxColumn";
-            // 
-            // loginBindingSource
-            // 
-            this.loginBindingSource.DataMember = "Login";
-            this.loginBindingSource.DataSource = this.pKLDataSet;
-            // 
-            // pKLDataSet
-            // 
-            this.pKLDataSet.DataSetName = "PKLDataSet";
-            this.pKLDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // txtCari
-            // 
-            this.txtCari.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtCari.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtCari.ForeColor = System.Drawing.Color.Silver;
-            this.txtCari.Location = new System.Drawing.Point(293, 170);
-            this.txtCari.MaximumSize = new System.Drawing.Size(400, 20);
-            this.txtCari.Name = "txtCari";
-            this.txtCari.Size = new System.Drawing.Size(171, 20);
-            this.txtCari.TabIndex = 63;
-            this.txtCari.Text = "Cari . . .";
-            this.txtCari.Enter += new System.EventHandler(this.txtCari_Enter);
-            this.txtCari.Leave += new System.EventHandler(this.txtCari_Leave);
-            // 
-            // loginTableAdapter
-            // 
-            this.loginTableAdapter.ClearBeforeFill = true;
             // 
             // FormAkun
             // 
